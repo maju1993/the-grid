@@ -1,26 +1,34 @@
-﻿Build started 2011-05-29 16:56:52.
-     1>Project "M:\GK proj svn\trunk\Engine\TheGrid\TheGrid.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
+﻿Build started 2011-05-29 17:45:35.
+     1>Project "M:\GK proj svn\trunk\Engine\TheGrid\TheGrid.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\TheGrid.lastbuildstate".
+       InitializeBuildStatus:
          Creating "Debug\TheGrid.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt cGameMgr.cpp main.cpp
          main.cpp
+         cGameMgr.cpp
+         Generating Code...
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\TheGrid.exe.embed.manifest.res" Debug\TheGrid_manifest.rc 
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\TheGrid.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.lib" /MACHINE:X86 Debug\TheGrid.exe.embed.manifest.res
+         Debug\cGameMgr.obj
          Debug\main.obj
        Manifest:
+         Deleting file "Debug\TheGrid.exe.embed.manifest".
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\TheGrid.exe.embed.manifest" /manifest Debug\TheGrid.exe.intermediate.manifest
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\TheGrid.exe.embed.manifest.res" Debug\TheGrid_manifest.rc 
        LinkEmbedManifest:
-         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\TheGrid.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.lib" /MACHINE:X86 Debug\TheGrid.exe.embed.manifest.res
+         Debug\cGameMgr.obj
+         Debug\main.obj
          TheGrid.vcxproj -> M:\GK proj svn\trunk\Engine\TheGrid\Debug\TheGrid.exe
        FinalizeBuildStatus:
          Deleting file "Debug\TheGrid.unsuccessfulbuild".
          Touching "Debug\TheGrid.lastbuildstate".
-     1>Done Building Project "M:\GK proj svn\trunk\Engine\TheGrid\TheGrid.vcxproj" (build target(s)).
+     1>Done Building Project "M:\GK proj svn\trunk\Engine\TheGrid\TheGrid.vcxproj" (rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.80
+Time Elapsed 00:00:02.16
