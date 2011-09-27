@@ -7,7 +7,7 @@
 #ifndef __COLORS__H__
 #define __COLORS__H__
 
-#include "extensions3.h"
+//#include "extensions3.h"
 
 //////////////////////////////////////////////////////////////////////
 // definicje kolorów RGB w ASP.NET (System.Drawing.Color)

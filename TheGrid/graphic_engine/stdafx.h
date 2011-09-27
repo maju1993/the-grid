@@ -28,7 +28,8 @@
 #include <GLShaderManager.h>
 #include "GL\freeglut.h"
 
-#include "common\extensions3.h"
-#include "common\shaders.h"
-#include "common\vecmatquat.h"
-#include "common\text.h"
+#include "colors.h"
+//#include "common\extensions3.h"
+//#include "common\shaders.h"
+//#include "common\vecmatquat.h"
+//#include "text.h"
