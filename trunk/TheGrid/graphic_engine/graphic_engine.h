@@ -10,6 +10,9 @@ private:
 
     }
 public:
+	
+	GLBatch	squareBatch;
+	GLShaderManager	shaderManager;
   static GraphicEng* getI()
 	{
 		if(instance == NULL)
