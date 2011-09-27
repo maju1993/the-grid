@@ -33,6 +33,7 @@ GraphicEng* GraphicEng::instance = NULL;
 	{
     // kolor t³a - zawartoœæ bufora koloru
     glClearColor( 1.0f, 1.0f, 1.0f, 1.0f );
+		shaderManager.InitializeStockShaders();
 		
     // w³¹czenie mechanizmów u¿ywanych podczas renderingu tekstu
     InitDrawText();

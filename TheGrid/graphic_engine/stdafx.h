@@ -8,6 +8,7 @@
 #include "targetver.h"
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+#define FREEGLUT_STATIC
 // Windows Header Files:
 #include <windows.h>
 
@@ -23,6 +24,9 @@
 
 
 // TODO: reference additional headers your program requires here
+#include <GLTools.h>	// OpenGL toolkit
+#include <GLShaderManager.h>
+#include "GL\freeglut.h"
 
 #include "common\extensions3.h"
 #include "common\shaders.h"
