@@ -8,8 +8,8 @@
 #define __TEXT__H__
 
 #include <string>
-#include "extensions3.h"
-#include "colors.h"
+//#include "extensions3.h"
+//#include "colors.h"
 
 //////////////////////////////////////////////////////////////////////
 // microsoft-cp1250 charset font

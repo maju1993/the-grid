@@ -9,6 +9,12 @@ void reshapeFunc(int x,int y)
 }
 void keyboardFun(unsigned char key,int x,int y)
 {
+	switch(key)
+	{
+		case 'f':
+				GraphicEng::getI()->showFpsInfo = !GraphicEng::getI()->showFpsInfo;
+			break;
+	}	
 	//UniverseDraw::get()->KeyPressFunc(key,x,y);
 }
 void specialFunc(int key,int x,int y)
@@ -41,16 +47,26 @@ void displayFunc()
 // Main entry point for GLUT based programs
 int main(int argc, char* argv[])
 {
+	gltSetWorkingDirectory(argv[0]);
 	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
-	glutInitWindowSize(900, 900);
+	glutInitWindowSize(900, 500);
 	glutCreateWindow("The Grid");
+
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+		{
+		// Problem: glewInit failed, something is seriously wrong.
+		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+		return 1;
+		}
+
 	glutReshapeFunc(reshapeFunc);
+  glutDisplayFunc(displayFunc);
   glutKeyboardFunc(keyboardFun);
   glutSpecialFunc(specialFunc);
 
-  glutDisplayFunc(displayFunc);
 
 	GraphicEng::getI()->InitScene();
 	//SetupRC();

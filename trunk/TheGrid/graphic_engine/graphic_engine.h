@@ -10,9 +10,10 @@ private:
 
     }
 public:
-	
-	GLBatch	squareBatch;
 	GLShaderManager	shaderManager;
+
+	bool showFpsInfo;
+
   static GraphicEng* getI()
 	{
 		if(instance == NULL)
@@ -28,6 +29,7 @@ public:
   void method();
   ~GraphicEng()
   {
+		showFpsInfo = true;
   }
 
 	//OpenGL funkcje

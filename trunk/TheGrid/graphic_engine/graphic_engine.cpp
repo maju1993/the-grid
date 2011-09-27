@@ -4,6 +4,15 @@
 
 extern int framesPerSecond;
 GraphicEng* GraphicEng::instance = NULL;
+GLBatch triBach;
+GLfloat blockSize = 0.1f;
+GLfloat vVerts[] = { -blockSize, -blockSize, 0.0f, 
+	                  0.0f, blockSize, 0.0f,
+					  blockSize,  -blockSize, 0.0f};
+GLBatch triBach2;
+GLfloat vVerts2[] = { -blockSize+0.5f, -blockSize+0.5f, 0.5f, 
+	                  0.5f, blockSize+0.5f, 0.5f,
+					  blockSize+0.5f,  -blockSize+0.5f, 0.5f};
 
 
 	//////////////////////////////////////////////////////////////////////
@@ -13,17 +22,28 @@ GraphicEng* GraphicEng::instance = NULL;
 	{
     // czyszczenie bufora koloru, bufora g³êbokoœci i bufora szblonowego
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );
-
-
 		
-    std::ostringstream txt;
-    txt << "FPS: " << framesPerSecond;
-    glDisable( GL_DEPTH_TEST );
-    DrawText8x16( 3, 20, txt.str() );
-    glEnable( GL_DEPTH_TEST );
+		shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clRed);
+		triBach.Draw();
+		shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clPink);
+		triBach2.Draw();
+
+		if(this->showFpsInfo)
+		{
+			std::ostringstream txt;
+			txt << "FPS: " << framesPerSecond;
+			glDisable( GL_DEPTH_TEST );
+			shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clBlack);
+			glColor3f(0, 0, 0); 
+			glRasterPos4d(-1, -1, 0, 1);
+			glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (unsigned char *)txt.str().c_str());
+			glEnable( GL_DEPTH_TEST );
+		}
 
 		// skierowanie poleceñ do wykonania
-		glFlush();
+		//glFlush();
+		glutSwapBuffers();
+		glutPostRedisplay();
 	}
 
 	//////////////////////////////////////////////////////////////////////
@@ -35,8 +55,18 @@ GraphicEng* GraphicEng::instance = NULL;
     glClearColor( 1.0f, 1.0f, 1.0f, 1.0f );
 		shaderManager.InitializeStockShaders();
 		
+		// Load up a triangle
+		triBach.Begin(GL_TRIANGLES, 3);
+		triBach.CopyVertexData3f(vVerts);
+		triBach.End();
+		// Load up a triangle
+		triBach2.Begin(GL_TRIANGLES, 3);
+		triBach2.CopyVertexData3f(vVerts2);
+		triBach2.End();
+
+		
     // w³¹czenie mechanizmów u¿ywanych podczas renderingu tekstu
-    InitDrawText();
+    //InitDrawText();
     glEnable( GL_DEPTH_TEST );
 	}
 
@@ -60,5 +90,5 @@ GraphicEng* GraphicEng::instance = NULL;
 		// usuniêcie obiektu tablic wierzcho³ków
 		
     // usuniêcie mechanizmów u¿ywanych podczas renderingu tekstu
-    DeleteDrawText();
+    //DeleteDrawText();
 	}
