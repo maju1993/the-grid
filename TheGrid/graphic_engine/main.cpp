@@ -14,7 +14,17 @@ void keyboardFun(unsigned char key,int x,int y)
 		case 'f':
 				GraphicEng::getI()->showFpsInfo = !GraphicEng::getI()->showFpsInfo;
 			break;
+		case 'c':
+			GraphicEng::getI()->grid.setFieldColor(4,2, 1,0,0,1);
+			break;
+		case 'e':
+			GraphicEng::getI()->generateGridEnemy(0, 0, 0);
+			break;
+		case 'p':
+			GraphicEng::getI()->showPlayer(5,5,0,0,0,-1);
 	}	
+
+	glutPostRedisplay();
 	//UniverseDraw::get()->KeyPressFunc(key,x,y);
 }
 void specialFunc(int key,int x,int y)

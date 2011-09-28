@@ -21,12 +21,15 @@
 #include "time.h"
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 
 // TODO: reference additional headers your program requires here
 #include <GLTools.h>	// OpenGL toolkit
 #include <GLShaderManager.h>
 #include "GL\freeglut.h"
+#include <GLFrustum.h>
+#include <GLMatrixStack.h>
 
 #include "colors.h"
 //#include "common\extensions3.h"
