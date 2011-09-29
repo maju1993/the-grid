@@ -13,7 +13,18 @@ GroundGridLayer::GroundGridLayer(Grid* _grid)
 }
 void GroundGridLayer::rescanState(int **stateTable)
 {
+	for(int i=0; i<GROUND_GRID_H; i++)
+	{
+		for(int j=0; j<GROUND_GRID_W; j++)
+		{
+			if(this->stateTable[j][i] != stateTable[j][i])
+			{
+				this->changeFieldColor(i, j, this->stateTable[j][i]);
+			}
+		}
+	}
 
+	this->stateTable = stateTable;
 }
 void GroundGridLayer::Init()
 {
@@ -38,7 +49,8 @@ void GroundGridLayer::Init()
 	}
 	lineBash->End();
 	
-	color = (GLfloat*)clLimeGreen; 
+	Color defCol(0, 1, 0, 1);
+	color = defCol.toArray(); 
 	for(int i=0; i<GROUND_GRID_H; i++)
 	{
 		for(int j=0; j<GROUND_GRID_W; j++)
@@ -57,9 +69,10 @@ void GroundGridLayer::Init()
 		}
 	}
 }
-void GroundGridLayer::setFieldColor(int x, int y, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+void GroundGridLayer::setFieldColor(int x, int y, Color col)
 {
-	GLfloat color[] = {r, g, b, a}; 
+	
+	GLfloat* color = col.toArray();
 	groundBatch[y][x]->Reset();
 	groundBatch[y][x]->Color4fv(color);
 	groundBatch[y][x]->Vertex3f(grid->minX+x*grid->fieldW, grid->minY+y*grid->fieldH, grid->groundZ); 

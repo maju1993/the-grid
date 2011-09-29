@@ -30,6 +30,7 @@
 #include "GL\freeglut.h"
 #include <GLFrustum.h>
 #include <GLMatrixStack.h>
+#include "Color.h"
 
 #include "colors.h"
 #include "Grid.h"
