@@ -12,9 +12,21 @@ private:
 public:
 	Grid* grid;
 
+	void changeFieldColor(int x, int y, int state)
+	{
+		Color *col;
+		switch(state)
+		{
+		case 0:
+		default:
+			col = new Color(0, 1, 0, 1);
+			break;
+		}
+		setFieldColor(x, y, *col);
+	}
 	
 	void rescanState(int **stateTable);
-	void setFieldColor(int x, int y, GLfloat r, GLfloat g, GLfloat b, GLfloat a);
+	void setFieldColor(int x, int y, Color col);
 	inline GLfloat *getPosition(int gridX, int gridY, int offsetX, int offsetY);
 
 	void Init();

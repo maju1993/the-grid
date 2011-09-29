@@ -18,15 +18,17 @@
     <ClCompile Include="GroundGridLayer.cpp">
       <Filter>Graphic\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="ModelsLayer.cpp" />
+    <ClCompile Include="ModelsLayer.cpp">
+      <Filter>Graphic\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.h">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="colors.h">
-      <Filter>Graphic</Filter>
-    </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Graphic</Filter>
     </ClInclude>
@@ -39,7 +41,12 @@
     <ClInclude Include="GroundGridLayer.h">
       <Filter>Graphic\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="ModelsLayer.h" />
+    <ClInclude Include="ModelsLayer.h">
+      <Filter>Graphic\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="colors.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="graphic_engine.rc" />
@@ -58,6 +65,9 @@
     </Filter>
     <Filter Include="Graphic\Layer">
       <UniqueIdentifier>{9b2be223-802e-48a6-8d53-d158bb7d2fcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{1fc09216-ead7-4c99-a794-7f46381772f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

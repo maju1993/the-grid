@@ -26,7 +26,7 @@ void keyboardFun(unsigned char key,int x,int y)
 			//GraphicEng::getI()->showPlayer(0,0,5,6,0,-1);
 			break;
 	}	
-
+	
 	glutPostRedisplay();
 	//UniverseDraw::get()->KeyPressFunc(key,x,y);
 }
