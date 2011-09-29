@@ -27,7 +27,6 @@
     <ClCompile Include="LogicLayer.cpp">
       <Filter>Logic</Filter>
     </ClCompile>
-    <ClCompile Include="gameLogic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
@@ -57,8 +56,9 @@
     <ClInclude Include="mapItem.h">
       <Filter>Logic</Filter>
     </ClInclude>
-    <ClInclude Include="bullet.h" />
-    <ClInclude Include="gameLogic.h" />
+    <ClInclude Include="bullet.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="graphic_engine.rc" />

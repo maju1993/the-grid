@@ -15,7 +15,7 @@ void keyboardFun(unsigned char key,int x,int y)
 			GraphicEng::getI()->showFpsInfo = !GraphicEng::getI()->showFpsInfo;
 			break;
 		case 'c':
-			GraphicEng::getI()->groundGrid->setFieldColor(4,2, 1,0,0,1);
+			GraphicEng::getI()->groundGrid->setFieldColor(4,2, Color(1, 0 ,0, 1));
 			break;
 		case 'e':
 			//GraphicEng::getI()->generateGridEnemy(0, 0, 0);

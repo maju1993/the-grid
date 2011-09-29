@@ -30,6 +30,7 @@ class ModelsLayer :
 {
 private:
 	std::vector<GridObject *> models;
+	std::vector<GridObject *> bullets;
 	GLShaderManager &shaderManager;
 	Grid *grid;
 public:

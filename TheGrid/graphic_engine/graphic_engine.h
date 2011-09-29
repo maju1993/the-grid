@@ -1,31 +1,13 @@
 #pragma once
 
+#ifndef __GRAPHICENGINE_H__
+#define __GRAPHICENGINE_H__
 #include "Grid.h"
-#include <vector>
 #include "ILayer.h"
 #include "GroundGridLayer.h"
+#include "ModelsLayer.h"
 
 
-class GridObject
-{
-public:
-	int id;
-	int offsetX;
-	int offsetY;
-	GLfloat ZRotateX, ZRotateY;
-	GLfloat ZRotateSpeed;
-	GLfloat MoveSpeed;
-	GLBatch* batch;
-	GridObject():id(0),offsetX(0),offsetY(0),ZRotateSpeed(0),ZRotateX(0),ZRotateY(0),MoveSpeed(0)
-	{
-		batch = 0;
-	}
-	~GridObject()
-	{
-		if(batch!=0)
-			delete batch;
-	}
-};
 class GraphicEng
 {
 private:
@@ -42,6 +24,7 @@ public:
 
 	//warstwa najnizsza
 	GroundGridLayer *groundGrid;
+	ModelsLayer *modelsLayer;
 	std::vector<ILayer*> layers;
 
 	Grid *grid;
@@ -137,3 +120,4 @@ public:
 	void Reshape( int width, int height );
 	void DeleteScene();
 };
+#endif
