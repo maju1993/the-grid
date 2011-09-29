@@ -32,6 +32,7 @@
 #include <GLMatrixStack.h>
 
 #include "colors.h"
+#include "Grid.h"
 //#include "common\extensions3.h"
 //#include "common\shaders.h"
 //#include "common\vecmatquat.h"
