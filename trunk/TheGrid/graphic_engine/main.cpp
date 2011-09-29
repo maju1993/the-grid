@@ -12,16 +12,19 @@ void keyboardFun(unsigned char key,int x,int y)
 	switch(key)
 	{
 		case 'f':
-				GraphicEng::getI()->showFpsInfo = !GraphicEng::getI()->showFpsInfo;
+			GraphicEng::getI()->showFpsInfo = !GraphicEng::getI()->showFpsInfo;
 			break;
 		case 'c':
-			GraphicEng::getI()->grid.setFieldColor(4,2, 1,0,0,1);
+			GraphicEng::getI()->groundGrid->setFieldColor(4,2, 1,0,0,1);
 			break;
 		case 'e':
-			GraphicEng::getI()->generateGridEnemy(0, 0, 0);
+			//GraphicEng::getI()->generateGridEnemy(0, 0, 0);
 			break;
 		case 'p':
-			GraphicEng::getI()->showPlayer(5,5,0,0,0,-1);
+			//GraphicEng::getI()->showPlayer(5,5,5,6,0,-1);
+			
+			//GraphicEng::getI()->showPlayer(0,0,5,6,0,-1);
+			break;
 	}	
 
 	glutPostRedisplay();
