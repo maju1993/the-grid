@@ -20,11 +20,10 @@ void GroundGridLayer::rescanState(int **stateTable)
 			if(this->stateTable[j][i] != stateTable[j][i])
 			{
 				this->changeFieldColor(i, j, this->stateTable[j][i]);
+				this->stateTable[j][i] = stateTable[j][i];
 			}
 		}
 	}
-
-	this->stateTable = stateTable;
 }
 void GroundGridLayer::Init()
 {

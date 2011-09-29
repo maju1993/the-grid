@@ -34,6 +34,7 @@
 
 #include "colors.h"
 #include "Grid.h"
+#include "LogicLayer.h"
 
 #include <vector>
 //#include "common\extensions3.h"
