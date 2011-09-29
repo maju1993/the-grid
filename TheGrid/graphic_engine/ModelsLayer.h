@@ -31,12 +31,15 @@ class ModelsLayer :
 private:
 	std::vector<GridObject *> models;
 	GLShaderManager &shaderManager;
+	Grid *grid;
 public:
+	void addCreep(int id);
+	void delModel(int id);
 	void moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateAngle);
 	void Init();
 	void Render(M3DMatrix44f modelViewMatrix);
 	void Dispose();
-	ModelsLayer(GLShaderManager *shaderManager);
+	ModelsLayer(GLShaderManager*, Grid*);
 	~ModelsLayer(void);
 };
 

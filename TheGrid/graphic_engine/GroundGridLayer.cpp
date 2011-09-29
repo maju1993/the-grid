@@ -11,7 +11,10 @@ GroundGridLayer::GroundGridLayer(Grid* _grid)
 			groundBatch[j][i] = 0;
 	
 }
+void GroundGridLayer::rescanState(int **stateTable)
+{
 
+}
 void GroundGridLayer::Init()
 {
 	//rysowanie lini
