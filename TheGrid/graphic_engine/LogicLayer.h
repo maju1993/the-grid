@@ -1,6 +1,6 @@
 #pragma once
-
-
+#include "mapItem.h"
+#include "bullet.h"
 
 class LogicLayer
 {

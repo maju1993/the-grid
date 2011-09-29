@@ -2,6 +2,7 @@
 //
 #include "stdafx.h"
 #include "graphic_engine.h"
+#include "LogicLayer.h"
 
 void reshapeFunc(int x,int y)
 {
@@ -40,9 +41,10 @@ int framesPerSecond = 0;
 int frames = 0;
 // licznik czasu
 long startTime = 0;
+long lastTime = clock();
+int logicTimeCounter = 0;
 void displayFunc()
 {
-	
   // licznik czasu
   if( !frames++ )
     startTime = clock();
@@ -53,8 +55,15 @@ void displayFunc()
     framesPerSecond = static_cast <int> ( frames * CLOCKS_PER_SEC/static_cast<float>( clock() - startTime ) );
     frames = 0;
   }
+	logicTimeCounter += clock() - lastTime;
+	if((double)logicTimeCounter/CLOCKS_PER_SEC > 0.1)
+	{
+		logicTimeCounter = 0;
+		//LogicLayer::getI()->doLogic();
+	}
 
 	GraphicEng::getI()->DisplayScene();
+	lastTime = clock();
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Main entry point for GLUT based programs
