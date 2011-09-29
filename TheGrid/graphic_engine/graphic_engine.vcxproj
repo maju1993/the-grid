@@ -87,7 +87,9 @@
     <None Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="colors.h" />
+    <ClInclude Include="gameLogic.h" />
     <ClInclude Include="graphic_engine.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GroundGridLayer.h" />
@@ -102,6 +104,7 @@
   <ItemGroup>
     <ClCompile Include="Color.h" />
     <ClCompile Include="DrawHelper.h" />
+    <ClCompile Include="gameLogic.cpp" />
     <ClCompile Include="graphic_engine.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GroundGridLayer.cpp" />
