@@ -2,7 +2,6 @@
 //
 #include "stdafx.h"
 #include "graphic_engine.h"
-#include "LogicLayer.h"
 
 void reshapeFunc(int x,int y)
 {

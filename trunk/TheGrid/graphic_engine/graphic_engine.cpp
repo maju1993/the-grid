@@ -16,6 +16,11 @@ GLMatrixStack		modelViewMatrix;
 		
 		glLineWidth(5);
 		shaderManager.UseStockShader(GLT_SHADER_SHADED, modelViewMatrix.GetMatrix());
+
+		if(LogicLayer::getI()->graphicsShouldRefreshBullets || LogicLayer::getI()->graphicsShouldRefreshCreeps || LogicLayer::getI()->graphicsShouldRefreshPlayer)
+		{
+			groundGrid->rescanState(LogicLayer::getI()->plansza);
+		}
 	
 		for(std::vector<ILayer*>::iterator it = layers.begin(); it<layers.end(); it++)
 		{
