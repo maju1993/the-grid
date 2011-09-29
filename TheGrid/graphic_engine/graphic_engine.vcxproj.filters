@@ -24,6 +24,9 @@
     <ClCompile Include="Color.h">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="LogicLayer.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
@@ -47,6 +50,12 @@
     <ClInclude Include="colors.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="LogicLayer.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="mapItem.h">
+      <Filter>Logic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="graphic_engine.rc" />
@@ -68,6 +77,9 @@
     </Filter>
     <Filter Include="Common">
       <UniqueIdentifier>{1fc09216-ead7-4c99-a794-7f46381772f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logic">
+      <UniqueIdentifier>{6af78e9b-9d88-45f6-8196-a6e02064e6f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
