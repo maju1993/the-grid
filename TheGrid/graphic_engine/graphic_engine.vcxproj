@@ -92,6 +92,8 @@
     <ClInclude Include="Grid.h" />
     <ClInclude Include="GroundGridLayer.h" />
     <ClInclude Include="ILayer.h" />
+    <ClInclude Include="LogicLayer.h" />
+    <ClInclude Include="mapItem.h" />
     <ClInclude Include="ModelsLayer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -103,6 +105,7 @@
     <ClCompile Include="graphic_engine.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GroundGridLayer.cpp" />
+    <ClCompile Include="LogicLayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelsLayer.cpp" />
     <ClCompile Include="Player.h" />
