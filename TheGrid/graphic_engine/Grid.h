@@ -19,7 +19,7 @@ public:
 	{
 		GLfloat *pos = new GLfloat[3];
 		pos[0] = minX+gridX*this->fieldW + fieldW/2 + offsetX*(this->fieldW/20);
-		pos[1] = maxY-gridY*this->fieldH - fieldH/2 + offsetY*(this->fieldH/20);
+		pos[1] = maxY-gridY*this->fieldH - fieldH/2 - offsetY*(this->fieldH/20);
 		pos[2] = groundZ;
 
 		return pos;
