@@ -28,7 +28,9 @@ public:
 			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);
 		}else if(item->type == MapItemType::MapItemTypePlayer)
 		{
-			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);//m3dDegToRad(float(item->angle)));
+			float rotateAngle = float(item->angle);
+			rotateAngle = (int)rotateAngle % 360;
+			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, m3dDegToRad(rotateAngle) );
 		}
 	}
 
