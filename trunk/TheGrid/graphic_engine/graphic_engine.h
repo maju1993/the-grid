@@ -24,6 +24,7 @@ public:
 
 	//warstwa najnizsza
 	GroundGridLayer *groundGrid;
+	//warstwa modeli (player, creepy, pociski)
 	ModelsLayer *modelsLayer;
 	std::vector<ILayer*> layers;
 

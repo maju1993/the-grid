@@ -6,12 +6,13 @@ class GroundGridLayer :
 	public ILayer
 {
 private:
+	GLShaderManager* shaderMaganer;
 	GLBatch *lineBash;
 	GLBatch *groundBatch[GROUND_GRID_H][GROUND_GRID_W];
-	int **stateTable;
+	int stateTable[GROUND_GRID_H][GROUND_GRID_W];
 public:
 	Grid* grid;
-
+	//zmienia kolor pola w gridzie
 	void changeFieldColor(int x, int y, int state)
 	{
 		Color *col;
@@ -24,15 +25,15 @@ public:
 		}
 		setFieldColor(x, y, *col);
 	}
-	
+	//Przeskanowanie tebali stanów i odpowiednie ustawienie kolorów
 	void rescanState(int **stateTable);
+	//ustawia kolor odpowiedniego pola w gridzie
 	void setFieldColor(int x, int y, Color col);
-	inline GLfloat *getPosition(int gridX, int gridY, int offsetX, int offsetY);
 
 	void Init();
 	void Render(M3DMatrix44f modelViewMatrix);
 	void Dispose();
-	GroundGridLayer(Grid* _grid);
+	GroundGridLayer(GLShaderManager *shaderMaganer, Grid* _grid);
 	virtual ~GroundGridLayer(void);
 };
 

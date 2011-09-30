@@ -23,28 +23,36 @@ public:
 	}
 	void fill(mapItem *item)
 	{
-		//fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngle());
+		fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);
 	}
 	void fill(Bullet *bullet)
 	{
-		//fill(bullet->position.x, bullet->position.y, bullet->offset.x, bullet->offset.y, ...);
+		//fill(bullet->position.x, bullet->position.y, bullet->offset.x, bullet->offset.y, bullet-);
 	}
-	void fill(int x, int y, int offsetX, int offsetY, GLfloat rotateAngle)
+	void fill(int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
 	{
 		this->posX = x;
 		this->posY = y;
 		this->offsetX = offsetX;
 		this->offsetY = offsetY;
-		this->rotateAngle = rotateAngle;
-		
+		this->ZRotateX = ZRotateX;
+		this->ZRotateY = ZRotateY;
+		M3DVector3f rotateVec;
+		m3dLoadVector3(rotateVec, rotateVecX, rotateVecY, 0);
+		M3DVector3f osX;
+		m3dLoadVector3(osX, 1, 0, 0);
+		this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX);
 	}
 	void move(Grid *grid)
 	{
+		M3DMatrix44f mat;
 		m3dLoadIdentity44(this->transformMatrix);
 		float* pos = grid->getPosition(posX, posY, offsetX, offsetY);
 
 		m3dTranslationMatrix44(this->transformMatrix, pos[0], pos[1], pos[2]);
-		m3dRotationMatrix44(this->transformMatrix, rotateAngle, 0, 0, -1);
+		m3dLoadIdentity44(mat);
+		m3dRotationMatrix44(mat, rotateAngle, 0, 0, -1);
+		m3dMatrixMultiply44(this->transformMatrix, this->transformMatrix, mat);
 		
 	}
 	GridObject(int _id=0):id(_id),offsetX(0),offsetY(0),ZRotateSpeed(0),ZRotateX(0),ZRotateY(0),moveSpeed(0),posX(0), posY(0)
@@ -67,12 +75,15 @@ private:
 	GLShaderManager &shaderManager;
 	Grid *grid;
 public:
+	//aktualizacja polozenia i obrotu pocisków pobierana z wektora logiki
 	void updateBullets(std::vector<Bullet*> _bullets);
+	//aktualizacja polozenia i obrotu creepow pobierana z wektora logiki
 	void updateCreeps(std::vector<mapItem*> creeps);
+	//aktualizacja polozenia i obrotu playera pobierana z logiki
 	void updatePlayer(mapItem* player);
 	void addCreep(int id);
 	void delModel(int id);
-	void moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateAngle);
+	void moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY);
 	void Init();
 	void Render(M3DMatrix44f modelViewMatrix);
 	void Dispose();

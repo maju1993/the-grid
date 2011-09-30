@@ -42,27 +42,35 @@ int frames = 0;
 long startTime = 0;
 long lastTime = clock();
 int logicTimeCounter = 0;
+int graphicTimeCounter = 0;
 void displayFunc()
 {
-  // licznik czasu
-  if( !frames++ )
-    startTime = clock();
-
-	// zliczanie iloœci ramek rysowanych na sekundê (FPS)
-  if( clock() - startTime >= 0.5 * CLOCKS_PER_SEC )
-  {
-    framesPerSecond = static_cast <int> ( frames * CLOCKS_PER_SEC/static_cast<float>( clock() - startTime ) );
-    frames = 0;
-  }
 	logicTimeCounter += clock() - lastTime;
 	if((double)logicTimeCounter/CLOCKS_PER_SEC > 0.1)
 	{
 		logicTimeCounter = 0;
 		//LogicLayer::getI()->doLogic();
 	}
+	
+	graphicTimeCounter += clock() - lastTime;
+	if((double)graphicTimeCounter/CLOCKS_PER_SEC > 0.02)
+	{
+		graphicTimeCounter = 0;
+		// licznik czasu
+		if( !frames++ )
+			startTime = clock();
+		// zliczanie iloœci ramek rysowanych na sekundê (FPS)
+		if( clock() - startTime >= 0.5 * CLOCKS_PER_SEC )
+		{
+			framesPerSecond = static_cast <int> ( frames * CLOCKS_PER_SEC/static_cast<float>( clock() - startTime ) );
+			frames = 0;
+		}
 
-	GraphicEng::getI()->DisplayScene();
+		GraphicEng::getI()->DisplayScene();
+	}
 	lastTime = clock();
+	//wymuszenie przejscia kolejnej klatku petli gry
+	glutPostRedisplay();
 }
 ///////////////////////////////////////////////////////////////////////////////
 // Main entry point for GLUT based programs

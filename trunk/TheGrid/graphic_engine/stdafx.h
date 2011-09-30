@@ -33,11 +33,11 @@
 #include "Color.h"
 
 #include "colors.h"
-#include "Grid.h"
 
 #include "mapItem.h"
 #include "bullet.h"
 #include "LogicLayer.h"
+#include "Grid.h"
 
 #include <vector>
 //#include "common\extensions3.h"
