@@ -39,6 +39,7 @@ public:
 		this->ZRotateY = ZRotateY;
 		M3DVector3f rotateVec;
 		m3dLoadVector3(rotateVec, rotateVecX, rotateVecY, 0);
+		m3dNormalizeVector3(rotateVec);
 		M3DVector3f osX;
 		m3dLoadVector3(osX, 1, 0, 0);
 		this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX);

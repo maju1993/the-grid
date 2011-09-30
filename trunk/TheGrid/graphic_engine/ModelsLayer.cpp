@@ -98,14 +98,17 @@ void ModelsLayer::Render(M3DMatrix44f modelViewMatrix)
 	if(LogicLayer::getI()->graphicsShouldRefreshCreeps == true)
 	{
 		this->updateCreeps(LogicLayer::getI()->creepy);
+		LogicLayer::getI()->graphicsShouldRefreshCreeps = false;
 	}
 	if(LogicLayer::getI()->graphicsShouldRefreshPlayer == true)
 	{
 		this->updatePlayer(LogicLayer::getI()->player);
+		LogicLayer::getI()->graphicsShouldRefreshPlayer = false;
 	}
 	if(LogicLayer::getI()->graphicsShouldRefreshBullets == true)
 	{
 		this->updateBullets(LogicLayer::getI()->bullets);
+		LogicLayer::getI()->graphicsShouldRefreshBullets = false;
 	}
 	
 	/*m3dLoadIdentity44(mat);
