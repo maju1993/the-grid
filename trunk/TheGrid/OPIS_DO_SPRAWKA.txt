@@ -1,0 +1,35 @@
+U¿yte biblioteki:
+- OpenGL - standardowa biblioteka OpenGL
+- freeGLUT
+- GLEW - openGL extension autoloader
+- GLES
+- GLTools
+- standardowe kontenery stl
+
+U¿yte narzêdzia:
+- Visual Studio 2010
+- Doxygen
+
+
+Elementy zwi¹zane z przedmiotem:
+- grafika 3D (biblioteka OpenGL)
+- przekszta³cenia afiniczne
+- proste mechanizmy animacji
+- eliminacja niewidocznych powierzchni przy pomocy kontrolowania mechanizmu bufora Z udostepnianego przez standardowa implementacje openGL
+- wykrywanie kolizji
+- wykorzystujemy shadery
+
+
+Uzyte algorytmy:
+- detekcja kolizji przy pomocy przyblizenia obiektow do sfer
+- 
+
+Uzyte wzorce projektowe:
+- singleton
+- interfejs
+- wrapper danych 
+
+
+Specyfika izolacji mechanizmow:
+- mechanizm graficzny odczytuje dane wprost z mechanizmu logiki i przerzuca niektore elementy do swojego wlasnego formatu danych przy pomocy wrapperow
+- mechanizm logiki nie jest swiadomy istnienia mechanizmu grafiki, posiada za to odpowiednie flagi uzywane do kontroli sterowania silnika graficznego

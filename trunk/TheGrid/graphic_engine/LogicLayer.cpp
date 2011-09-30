@@ -194,18 +194,18 @@
 			return;
 		}
 
-		if (keyStates[GLUT_KEY_UP])
+		if (specialKeystates[GLUT_KEY_UP])
 			LogicLayer::getI()->MovePlayer(0,-1);
 		
 
-		if (keyStates[GLUT_KEY_DOWN])
+		if (specialKeystates[GLUT_KEY_DOWN])
 			LogicLayer::getI()->MovePlayer(0,1);
 		
-		if (keyStates[GLUT_KEY_LEFT])
+		if (specialKeystates[GLUT_KEY_LEFT])
 			LogicLayer::getI()->MovePlayer(-5,0);
 		
 
-		if (keyStates[GLUT_KEY_RIGHT])
+		if (specialKeystates[GLUT_KEY_RIGHT])
 			LogicLayer::getI()->MovePlayer(5,0);		
 
 		if (keyStates[32])

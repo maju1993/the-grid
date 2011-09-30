@@ -6,12 +6,12 @@
 
 // Funkcja wcisniecia klawiszy specjalnych
 void keyPressed (int key, int x, int y) {
-	LogicLayer::getI()->keyStates[key] = true; // Set the state of the current key to pressed
+	LogicLayer::getI()->specialKeystates[key] = true; // Set the state of the current key to pressed
 }
 
 // Funkcja zwolnienia klawiszy specjalnych
 void keyUp (int key, int x, int y) {
-	LogicLayer::getI()->keyStates[key] = false; // Set the state of the current key to not pressed
+	LogicLayer::getI()->specialKeystates[key] = false; // Set the state of the current key to not pressed
 }
 
 // Funkcja wcisniecia klawiszy 
