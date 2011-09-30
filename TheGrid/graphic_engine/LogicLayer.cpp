@@ -31,8 +31,9 @@
 	{	
 		//player->teleportBy(player->getSpeed()*x, player->getSpeed() *y);//player->getPosition().x,player->getPosition().y-player->getSpeed());
 		
-		
+		player->angle += x;
 
+		player->teleportBy( player->getSpeed() * sinf(player->angle) *y, player->getSpeed() * cosf(player->angle)*y);
 
 		graphicsShouldRefreshPlayer = true;
 	}

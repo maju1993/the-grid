@@ -7,6 +7,7 @@ mapItem::mapItem(MapItemType typ, int posX,int posY,int speed)
 	offset = Point2D(0,0);
 	this->speed = speed;
 	this->type = typ;
+	angle=0;
 }
 
 Point2D mapItem::getPosition()
