@@ -28,7 +28,7 @@ public:
 			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);
 		}else if(item->type == MapItemType::MapItemTypePlayer)
 		{
-			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->angle);
+			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);//m3dDegToRad(float(item->angle)));
 		}
 	}
 
@@ -51,7 +51,7 @@ public:
 		double r = m3dRadToDeg(this->rotateAngle);
 		fill(x, y, offsetX, offsetY, r);
 	}
-	void fill(int x, int y, int offsetX, int offsetY, int rotateAngle)
+	void fill(int x, int y, int offsetX, int offsetY, double rotateAngle)
 	{
 		this->posX = x;
 		this->posY = y;
