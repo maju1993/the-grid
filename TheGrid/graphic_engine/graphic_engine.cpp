@@ -4,7 +4,16 @@
 extern int framesPerSecond;
 GraphicEng* GraphicEng::instance = NULL;
 
-GLMatrixStack		modelViewMatrix;
+
+
+GLShaderManager		shaderManager;			// Shader Manager
+GLMatrixStack		modelViewMatrix;		// Modelview Matrix
+GLMatrixStack		projectionMatrix;		// Projection Matrix
+GLFrustum			viewFrustum;			// View Frustum
+GLGeometryTransform	transformPipeline;		// Geometry Transform Pipeline
+GLFrame				cameraFrame;			// Camera frame
+
+GLBatch b;
 	//////////////////////////////////////////////////////////////////////
 	// funkcja generuj¹ca scenê 3D
 	//////////////////////////////////////////////////////////////////////
@@ -13,24 +22,47 @@ GLMatrixStack		modelViewMatrix;
     // czyszczenie bufora koloru, bufora g³êbokoœci i bufora szblonowego
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );
 		
-		glLineWidth(5);
-		glPointSize(10);
-		shaderManager.UseStockShader(GLT_SHADER_SHADED, modelViewMatrix.GetMatrix());
-
-		
-		shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clBlue);
-		
-
 		if(LogicLayer::getI()->graphicsShouldRefreshBullets || LogicLayer::getI()->graphicsShouldRefreshCreeps || LogicLayer::getI()->graphicsShouldRefreshPlayer)
 		{
 			groundGrid->rescanState(LogicLayer::getI()->grid);
 		}
+		glLineWidth(1);
+		glPointSize(10);
+		glEnable( GL_DEPTH_TEST );
+		glEnable (GL_BLEND);
+		glEnable(GL_LINE_SMOOTH);
+		glEnable(GL_POINT_SMOOTH);
+		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		modelViewMatrix.PushMatrix();	
+		M3DMatrix44f mCamera;
+		cameraFrame.GetCameraMatrix(mCamera);
+		modelViewMatrix.MultMatrix(mCamera);
 	
+		// Draw the world upside down
+		modelViewMatrix.PushMatrix();
+		modelViewMatrix.Scale(1.0f, 1.0f, -1.0f); // Flips the Y Axis
+		modelViewMatrix.Translate(0.0f, 0.0f, 2.5f); // Scootch the world down a bit...
+		modelViewMatrix.Rotate(15, 1, 0, 0);
+
+		shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), clBlue);	
+		b.Begin(GL_TRIANGLE_FAN, 10);
+		b.Vertex3f(0,0,-1);
+		b.Vertex3f(0.8f,0,-1);
+		b.Vertex3f(2,1,-1);
+		b.End();
+
+
+		//groundGrid->Render((float*)transformPipeline.GetModelViewProjectionMatrix());
+		
+		//b.Draw();
 		for(std::vector<ILayer*>::iterator it = layers.begin(); it<layers.end(); it++)
 		{
-			(*it)->Render((float*)modelViewMatrix.GetMatrix());
+			(*it)->Render((float*)transformPipeline.GetModelViewProjectionMatrix());
 		}
-
+		
+		modelViewMatrix.PopMatrix();
+		modelViewMatrix.PopMatrix();
 		//grid.renderFields();
 		//
   //  //private constructor
@@ -58,18 +90,19 @@ GLMatrixStack		modelViewMatrix;
 		
 		if(this->showFpsInfo)
 		{
-			std::ostringstream txt;
+			/*std::ostringstream txt;
 			txt << "FPS: " << framesPerSecond;
 			glDisable( GL_DEPTH_TEST );
 			shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clBlack);
 			glColor3f(0, 0, 0); 
 			glRasterPos4d(-1, -1, 0, 1);
 			glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (unsigned char *)txt.str().c_str());
-			glEnable( GL_DEPTH_TEST );
+			glEnable( GL_DEPTH_TEST );*/
 		}
 
 		// skierowanie poleceñ do wykonania
-		glFlush();
+    // Do the buffer Swap
+		//glFlush();
 		glutSwapBuffers();
 	}
 	//////////////////////////////////////////////////////////////////////
@@ -78,7 +111,7 @@ GLMatrixStack		modelViewMatrix;
 	void GraphicEng::InitScene()
 	{
     // kolor t³a - zawartoœæ bufora koloru
-    glClearColor( 1.0f, 1.0f,1.0f, 1.0f );
+    glClearColor( 0.0f, 0.0f,0.0f, 1.0f );
 		shaderManager.InitializeStockShaders();
     glEnable( GL_DEPTH_TEST );
 		
@@ -95,9 +128,7 @@ GLMatrixStack		modelViewMatrix;
 		//grid.generateBashGrid(-1, 1, -1, 1, -0.01f,  0.0f);
 		
 		modelViewMatrix.LoadIdentity();
-		viewFrustum.SetOrthographic(-1, 1, -1, 1, -1, 1);
-    // w³¹czenie mechanizmów u¿ywanych podczas renderingu tekstu
-    //InitDrawText();
+		//viewFrustum.SetOrthographic(-1, 1, -1, 1, -1, 1);
 	}
 
 	//////////////////////////////////////////////////////////////////////
@@ -107,7 +138,15 @@ GLMatrixStack		modelViewMatrix;
 	{
 		// obszar renderingu - ca³e okno
 		glViewport( 0, 0, width, height );
-		viewFrustum.SetOrthographic(-1, 1, -1, 1, -1, 1);
+		//viewFrustum.SetOrthographic(-1, 1, -1, 1, -1, 1);
+
+		glViewport(0, 0, width, height);
+		transformPipeline.SetMatrixStacks(modelViewMatrix, projectionMatrix);
+	
+		viewFrustum.SetPerspective(50.0f, float(width)/float(height), 1.0f, 100.0f);
+		projectionMatrix.LoadMatrix(viewFrustum.GetProjectionMatrix());
+		modelViewMatrix.LoadIdentity();
+
 	}
 
 	void GraphicEng::DeleteScene()

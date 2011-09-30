@@ -33,7 +33,8 @@ void GroundGridLayer::Init()
 {
 	//rysowanie lini
 	delete lineBash;
-	GLfloat* color = (GLfloat*)clWhiteSmoke; 
+	Color defCol(0, 1, 0, 0.9);
+	GLfloat* color = defCol.toArray(); 
 	lineBash = new GLBatch();
 	lineBash->Begin(GL_LINES, 2*(GROUND_GRID_H+GROUND_GRID_W+2));
 	for(int i=0; i<=GROUND_GRID_H; i++)
@@ -52,7 +53,7 @@ void GroundGridLayer::Init()
 	}
 	lineBash->End();
 	
-	Color defCol(0, 1, 0, 1);
+	defCol = Color(0.9f, 0.9f, 0.9f, 0.3);
 	color = defCol.toArray(); 
 	for(int i=0; i<GROUND_GRID_H; i++)
 	{

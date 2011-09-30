@@ -10,7 +10,7 @@ public:
 		Color col(r, g, b, a);
 		batch.Begin(GL_TRIANGLE_FAN, 5);
 		batch.Color4fv(col.toArray());
-		batch.Vertex3f(0, 0, -0.7f);
+		batch.Vertex3f(0, 0, -2*grid.fieldW);
 		batch.Color4fv(col.toArray());
 		batch.Vertex3f(-grid.fieldW/2, -grid.fieldH/4, grid.groundZ);
 		batch.Color4fv(col.toArray());
@@ -28,7 +28,7 @@ public:
 		Color col(r, g, b, a);
 		batch.Begin(GL_POINTS, 1);
 		batch.Color4fv(col.toArray());
-		batch.Vertex3f(0, 0, -0.5f);
+		batch.Vertex3f(0, 0, -0.1f);
 		batch.End();
 	}
 };

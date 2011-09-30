@@ -60,7 +60,7 @@ void ModelsLayer::updateCreeps(std::vector<mapItem*> creeps)
 		creep->move(grid);
 		
 		creep->setBatch(new GLBatch());
-		DrawHelper::drawTriangle(*creep->batch, 1, 0, 0, 1, *grid);
+		DrawHelper::drawTriangle(*creep->batch, 1, 0, 0, 0.8, *grid);
 		
 		models.push_back(creep);
 	}
