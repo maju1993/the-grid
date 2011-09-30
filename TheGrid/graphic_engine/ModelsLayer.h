@@ -38,29 +38,36 @@ public:
 	}
 	void fill(int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
 	{
-		M3DVector3f rotateVec;
-		m3dLoadVector3(rotateVec, rotateVecX, -rotateVecY, 0);
-		m3dNormalizeVector3(rotateVec);
-		M3DVector3f os;
-		m3dLoadVector3(os, 0, 1, 0);
-		m3dNormalizeVector3(os);
-		double m = m3dRadToDeg(m3dGetAngleBetweenVectors3(rotateVec, os));
-		if(m3dGetVectorX(rotateVec) > 0)
-			if(m3dGetVectorY(rotateVec) > 0)
-			{
-				this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os) ;
-				this->rotateAngle += m3dDegToRad(360) - (2 * this->rotateAngle);
-			}
-			else
-			{
-				this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os);
-				this->rotateAngle += (2 * (m3dDegToRad(180)-this->rotateAngle));
-			}
+		double rotateAng;
+		if(rotateVecX == 0 && rotateVecY == 0)
+		{
+			rotateAng = this->rotateAngle;
+		}
 		else
-			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os);
-		double r = m3dRadToDeg(this->rotateAngle);
-		
-		fill(x, y, offsetX, offsetY, this->rotateAngle);
+		{
+			M3DVector3f rotateVec;
+			m3dLoadVector3(rotateVec, rotateVecX, -rotateVecY, 0);
+			m3dNormalizeVector3(rotateVec);
+			M3DVector3f os;
+			m3dLoadVector3(os, 0, 1, 0);
+			m3dNormalizeVector3(os);
+			double m = m3dRadToDeg(m3dGetAngleBetweenVectors3(rotateVec, os));
+			if(m3dGetVectorX(rotateVec) > 0)
+				if(m3dGetVectorY(rotateVec) > 0)
+				{
+					rotateAng = m3dGetAngleBetweenVectors3(rotateVec, os) ;
+					rotateAng += m3dDegToRad(360) - (2 * rotateAng);
+				}
+				else
+				{
+					rotateAng = m3dGetAngleBetweenVectors3(rotateVec, os);
+					rotateAng += (2 * (m3dDegToRad(180)-rotateAng));
+				}
+			else
+				rotateAng = m3dGetAngleBetweenVectors3(rotateVec, os);
+		}
+		double r = m3dRadToDeg(rotateAng);
+		fill(x, y, offsetX, offsetY, rotateAng);
 	}
 	void fill(int x, int y, int offsetX, int offsetY, double rotateAngle)
 	{
