@@ -26,7 +26,6 @@ class mapItem
 private:
 	Point2D mapPos;			// 0...maxMapX/Y
 	Point2D offset;	// -10...10
-	MapItemType type;	
 
 	// movement data
 	Point2D destination;  	// destination  position
@@ -37,6 +36,7 @@ private:
 
 public:
 	int angle;
+	MapItemType type;	
 	mapItem(MapItemType typ, int posX,int posY, int speed);
 
 	Point2D getPosition();

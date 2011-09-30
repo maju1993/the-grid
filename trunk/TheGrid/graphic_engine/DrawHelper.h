@@ -12,13 +12,13 @@ public:
 		batch.Color4fv(col.toArray());
 		batch.Vertex3f(0, 0, -0.7f);
 		batch.Color4fv(col.toArray());
-		batch.Vertex3f(-grid.fieldW/2, grid.fieldH/4, grid.groundZ);
+		batch.Vertex3f(-grid.fieldW/2, -grid.fieldH/4, grid.groundZ);
 		batch.Color4fv(col.toArray());
-		batch.Vertex3f(0, -grid.fieldH/2, grid.groundZ);
+		batch.Vertex3f(0, grid.fieldH/2, grid.groundZ);
 		batch.Color4fv(col.toArray());
-		batch.Vertex3f(grid.fieldW/2, grid.fieldH/4, grid.groundZ);
+		batch.Vertex3f(grid.fieldW/2, -grid.fieldH/4, grid.groundZ);
 		batch.Color4fv(col.toArray());
-		batch.Vertex3f(-grid.fieldW/2, grid.fieldH/4, grid.groundZ);
+		batch.Vertex3f(-grid.fieldW/2, -grid.fieldH/4, grid.groundZ);
 		batch.End();
 	}
 };
