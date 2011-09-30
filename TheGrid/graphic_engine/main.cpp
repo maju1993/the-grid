@@ -4,83 +4,34 @@
 #include "graphic_engine.h"
 
 
-
-
+// Funkcja wcisniecia klawiszy specjalnych
 void keyPressed (int key, int x, int y) {
 	LogicLayer::getI()->keyStates[key] = true; // Set the state of the current key to pressed
 }
 
+// Funkcja zwolnienia klawiszy specjalnych
 void keyUp (int key, int x, int y) {
 	LogicLayer::getI()->keyStates[key] = false; // Set the state of the current key to not pressed
 }
 
+// Funkcja wcisniecia klawiszy 
 void keyPressedS (unsigned char key, int x, int y) {
 	LogicLayer::getI()->keyStates[key] = true; // Set the state of the current key to pressed
 }
 
+// Funkcja zwolnienia klawiszy
 void keyUpS (unsigned char key, int x, int y) {
 	LogicLayer::getI()->keyStates[key] = false; // Set the state of the current key to not pressed
 }
 
 
 
-
-
-
+// Funkcja reshape'ujaca view
 void reshapeFunc(int x,int y)
 {
   GraphicEng::getI()->Reshape(x, y);
 }
-/*
-void keyboardFun(unsigned char key,int x,int y)
-{
-	switch(key)
-	{
-		case 'f':
-			GraphicEng::getI()->showFpsInfo = !GraphicEng::getI()->showFpsInfo;
-			break;
-		case 'c':
-			GraphicEng::getI()->groundGrid->setFieldColor(4,2, Color(1, 0 ,0, 1));
-			break;
-		case 'e':
-			//GraphicEng::getI()->generateGridEnemy(0, 0, 0);
-			break;
-		case 'p':
-			//GraphicEng::getI()->showPlayer(5,5,5,6,0,-1);
-			
-			//GraphicEng::getI()->showPlayer(0,0,5,6,0,-1);
-			break;
-	}	
-	
-	glutPostRedisplay();
-	//UniverseDraw::get()->KeyPressFunc(key,x,y);
-}
 
-void specialFunc(int key,int x,int y)
-{
-	
-	switch(key)
-	{
-		case GLUT_KEY_UP:
-			LogicLayer::getI()->MovePlayer(0,-1);
-		break;
-
-		case GLUT_KEY_DOWN:
-			LogicLayer::getI()->MovePlayer(0,1);
-		break;
-		case GLUT_KEY_LEFT:
-			LogicLayer::getI()->MovePlayer(-5,0);
-		break;
-
-		case GLUT_KEY_RIGHT:
-			LogicLayer::getI()->MovePlayer(5,0);
-		break;
-		
-		
-	}
-
-}
-*/
 
 
 // wartoœæ FPS
@@ -144,17 +95,15 @@ int main(int argc, char* argv[])
 		}
 
 	glutReshapeFunc(reshapeFunc);
-  glutDisplayFunc(displayFunc);
-  //glutKeyboardFunc(keyboardFun);
-  //glutSpecialFunc(specialFunc);
-glutSpecialFunc(keyPressed);
-glutKeyboardFunc(keyPressedS);
-glutSpecialUpFunc(keyUp);
-glutKeyboardUpFunc(keyUpS);
+	glutDisplayFunc(displayFunc);
+  
+	glutSpecialFunc(keyPressed);
+	glutKeyboardFunc(keyPressedS);
+	glutSpecialUpFunc(keyUp);
+	glutKeyboardUpFunc(keyUpS);
 
 
-	GraphicEng::getI()->InitScene();
-	//SetupRC();
+	GraphicEng::getI()->InitScene();	
 
 	glutMainLoop();
 }
