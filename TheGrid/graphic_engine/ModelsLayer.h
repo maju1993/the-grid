@@ -23,13 +23,35 @@ public:
 	}
 	void fill(mapItem *item)
 	{
-		fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);
+		if(item->type == MapItemType::MapItemTypeCreep)
+		{
+			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->getAngleVec().x, item->getAngleVec().y);
+		}else if(item->type == MapItemType::MapItemTypePlayer)
+		{
+			fill(item->getPosition().x, item->getPosition().y, item->getOffset().x, item->getOffset().y, item->angle);
+		}
 	}
+
 	void fill(Bullet *bullet)
 	{
 		//fill(bullet->position.x, bullet->position.y, bullet->offset.x, bullet->offset.y, bullet-);
 	}
 	void fill(int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
+	{
+		M3DVector3f rotateVec;
+		m3dLoadVector3(rotateVec, rotateVecX, -rotateVecY, 0);
+		m3dNormalizeVector3(rotateVec);
+		M3DVector3f os;
+		m3dLoadVector3(os, 0, 1, 0);
+		m3dNormalizeVector3(os);
+		if(m3dGetVectorX(rotateVec) > 0)
+			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os) + m3dDegToRad(180) ;
+		else
+			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os);
+		double r = m3dRadToDeg(this->rotateAngle);
+		fill(x, y, offsetX, offsetY, r);
+	}
+	void fill(int x, int y, int offsetX, int offsetY, int rotateAngle)
 	{
 		this->posX = x;
 		this->posY = y;
@@ -37,18 +59,7 @@ public:
 		this->offsetY = offsetY;
 		this->ZRotateX = ZRotateX;
 		this->ZRotateY = ZRotateY;
-		M3DVector3f rotateVec;
-		m3dLoadVector3(rotateVec, rotateVecX, -rotateVecY, 0);
-		m3dNormalizeVector3(rotateVec);
-		M3DVector3f osX;
-		m3dLoadVector3(osX, 0, -1, 0);
-		m3dNormalizeVector3(osX);
-		if(m3dGetVectorX(rotateVec) < 0)
-			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX) + m3dDegToRad(180) ;
-		else
-			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX);
-		//this->rotateAngle = 0;
-		double r = m3dRadToDeg(this->rotateAngle);
+		this->rotateAngle = rotateAngle;
 	}
 	void move(Grid *grid)
 	{
@@ -58,7 +69,7 @@ public:
 
 		m3dTranslationMatrix44(this->transformMatrix, pos[0], pos[1], pos[2]);
 		m3dLoadIdentity44(mat);
-		m3dRotationMatrix44(mat, rotateAngle, 0, 0, 1);
+		m3dRotationMatrix44(mat, rotateAngle, 0, 0, -1);
 		m3dMatrixMultiply44(this->transformMatrix, this->transformMatrix, mat);
 		
 	}
