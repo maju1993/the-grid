@@ -152,18 +152,25 @@
 
 		if (keyStates[GLUT_KEY_RIGHT])
 			LogicLayer::getI()->MovePlayer(5,0);		
+
 		if (keyStates[32])
 			shot();
 	};
 
 	void LogicLayer::shot()
 	{
+	
 		int dscx,dscy;
+		dscx = -100* sinf(player->angle * 3.14/180.0);// + player->getPosition().x;
+		dscy = -100 * cosf(player->angle* 3.14/180.0);// + player->getPosition().y;
 
+
+		/*
 		dscx = player->destination.x - player->getPosition().x;
 		dscy = player->destination.y - player->getPosition().y;
 		dscx*=50;
 		dscy*=50;
+		*/
 
 		Bullet *bullet = new Bullet(
 			player->getPosition(),
