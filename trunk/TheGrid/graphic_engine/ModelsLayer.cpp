@@ -73,7 +73,7 @@ void ModelsLayer::updatePlayer(mapItem* _player)
 	player->move(this->grid);
 
 	player->setBatch(new GLBatch());
-	DrawHelper::drawTriangle(*player->batch, 1, 1, 1, 1, *grid);
+	DrawHelper::drawTriangle(*player->batch, 0, 0, 1, 1, *grid);
 }
 void ModelsLayer::moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
 {
@@ -111,20 +111,23 @@ void ModelsLayer::Render(M3DMatrix44f modelViewMatrix)
 		LogicLayer::getI()->graphicsShouldRefreshBullets = false;
 	}
 	
-	/*m3dLoadIdentity44(mat);
-	m3dLoadIdentity44(rot);
-	m3dTranslationMatrix44(mat, 0.5f, 0.5f, 0);
-	m3dRotationMatrix44(rot, m3dDegToRad(45), 0, 0, -1);
-	m3dMatrixMultiply44(productMatrix, rot, mat);
-	m3dMatrixMultiply44(productMatrix, productMatrix, modelViewMatrix);
-	shaderManager.UseStockShader(GLT_SHADER_SHADED, productMatrix);
-	GLBatch b;
-	b.Begin(GL_TRIANGLES, 3);
-	b.Vertex3f(-0.5f, 0.0f, -0.1f); b.Color4fv((float*)clBlue);
-	b.Vertex3f(0.5f, 0.0f, -0.1f);b.Color4fv((float*)clBlue);
-	b.Vertex3f(0.5f, 0.5f, -0.8f);b.Color4fv((float*)clBlue);
-	b.End();
-	b.Draw();*/
+	//m3dLoadIdentity44(mat);
+	//m3dLoadIdentity44(rot);
+	////m3dTranslationMatrix44(mat, 0.5f, 0.5f, 0);
+	////m3dRotationMatrix44(rot, m3dDegToRad(45), 0, 0, -1);
+	//m3dMatrixMultiply44(productMatrix, rot, mat);
+	//m3dMatrixMultiply44(productMatrix, productMatrix, modelViewMatrix);
+	//shaderManager.UseStockShader(GLT_SHADER_SHADED, productMatrix);
+	//GLBatch b;
+	//b.Begin(GL_TRIANGLES, 3);
+	//b.Color4fv((float*)clBlue);
+	//b.Vertex3f(-0.5f, 0.0f, -0.1f); 
+	//b.Color4fv((float*)clBlue);
+	//b.Vertex3f(0.5f, -0.3f, -0.1f);
+	//b.Color4fv((float*)clBlue);
+	//b.Vertex3f(0.0f, 0.5f, -0.8f);
+	//b.End();
+	//b.Draw();
 
 	for(std::vector<GridObject*>::iterator it = models.begin(); it<models.end(); it++)
 	{
