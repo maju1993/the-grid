@@ -37,7 +37,7 @@ private:
 public:
 	int hp;
 	Point2D destination;  	// destination  position
-	int angle;
+	double angle;
 	MapItemType type;	
 	mapItem(MapItemType typ, int posX,int posY, int speed);
 

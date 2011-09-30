@@ -9,8 +9,10 @@ bool Bullet::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zalez
 	if ((mapPos.x == destination.x) &&(mapPos.y == destination.y)&&(offset.x == destinationOffset.x)&&(offset.y == destinationOffset.y))
 		return true;
 
+	float len = sqrt((float)(destination.x-mapPos.x)*(destination.x-mapPos.x) + (destination.y-mapPos.y)*(destination.y-mapPos.y));
 	speedX = bulletSpeed;// * wsp;
-	speedY = bulletSpeed;//(speed - speed*wsp);
+	speedX = (float)abs(destination.x - mapPos.x)/len*bulletSpeed;
+	speedY = (float)abs(destination.y - mapPos.y)/len*bulletSpeed;//bulletSpeed;//(speed - speed*wsp);
 
 	
 
