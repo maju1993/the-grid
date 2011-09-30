@@ -189,7 +189,7 @@
 	{
 		if (gameover)
 		{
-			if (keyStates[13])
+			if (keyStates[13] || keyStates[27])
 				glutExit();
 			return;
 		}
@@ -215,7 +215,10 @@
 			showFPSinfo = !showFPSinfo;
 
 		if (keyStates[27])
-			glutExit();
+		{
+			gameover = true;
+			//glutExit();
+		}
 	};
 
 	void LogicLayer::shot()
