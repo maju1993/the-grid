@@ -38,11 +38,17 @@ public:
 		this->ZRotateX = ZRotateX;
 		this->ZRotateY = ZRotateY;
 		M3DVector3f rotateVec;
-		m3dLoadVector3(rotateVec, rotateVecX, rotateVecY, 0);
+		m3dLoadVector3(rotateVec, rotateVecX, -rotateVecY, 0);
 		m3dNormalizeVector3(rotateVec);
 		M3DVector3f osX;
-		m3dLoadVector3(osX, 1, 0, 0);
-		this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX);
+		m3dLoadVector3(osX, 0, -1, 0);
+		m3dNormalizeVector3(osX);
+		if(m3dGetVectorX(rotateVec) < 0)
+			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX) + m3dDegToRad(180) ;
+		else
+			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX);
+		
+		double r = m3dRadToDeg(this->rotateAngle);
 	}
 	void move(Grid *grid)
 	{
@@ -52,11 +58,11 @@ public:
 
 		m3dTranslationMatrix44(this->transformMatrix, pos[0], pos[1], pos[2]);
 		m3dLoadIdentity44(mat);
-		m3dRotationMatrix44(mat, rotateAngle, 0, 0, -1);
+		m3dRotationMatrix44(mat, rotateAngle, 0, 0, 1);
 		m3dMatrixMultiply44(this->transformMatrix, this->transformMatrix, mat);
 		
 	}
-	GridObject(int _id=0):id(_id),offsetX(0),offsetY(0),ZRotateSpeed(0),ZRotateX(0),ZRotateY(0),moveSpeed(0),posX(0), posY(0)
+	GridObject(int _id=0):id(_id),offsetX(0),offsetY(0),ZRotateSpeed(0),ZRotateX(0),ZRotateY(0),moveSpeed(0),posX(0), posY(0),rotateAngle(0)
 	{
 		m3dLoadIdentity44(transformMatrix);
 		batch = 0;
