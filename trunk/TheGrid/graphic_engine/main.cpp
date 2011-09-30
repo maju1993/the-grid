@@ -59,10 +59,10 @@ void displayFunc()
 	if((double)graphicTimeCounter/CLOCKS_PER_SEC >= 0.02)
 	{
 		graphicTimeCounter = 0;
-		// licznik czasu
+		//licznik czasu
 		if( !frames++ )
 			startTime = clock();
-		// zliczanie iloœci ramek rysowanych na sekundê (FPS)
+		//zliczanie iloœci ramek rysowanych na sekundê (FPS)
 		if( clock() - startTime >= 0.5 * CLOCKS_PER_SEC )
 		{
 			framesPerSecond = static_cast <int> ( frames * CLOCKS_PER_SEC/static_cast<float>( clock() - startTime ) );
