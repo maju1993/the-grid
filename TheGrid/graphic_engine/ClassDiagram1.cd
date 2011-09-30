@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GraphicEng" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAICCIASCgCAAAEAAIAAABAAAAAAAgABQQBIAA=</HashCode>
+      <FileName>graphic_engine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grid" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADCAIgAAAgAAAAAAAAAAAAAAAAAABAAAQAAAADAAAQA=</HashCode>
+      <FileName>Grid.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawHelper" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAEA=</HashCode>
+      <FileName>DrawHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GroundGridLayer" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCYAABIAAAgAIEAAAAAAAAAAABACAAACACA=</HashCode>
+      <FileName>GroundGridLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ILayer" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
+      <FileName>ILayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GridObject" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAABAAAADAAAAgAAACEAgAAAAAAAgAwAEAAgI=</HashCode>
+      <FileName>ModelsLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelsLayer" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABCqIAAIAAAAAEAAEACABAAAABABACAAIIAAA=</HashCode>
+      <FileName>ModelsLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Color" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAQABgAAAAAA=</HashCode>
+      <FileName>Color.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bullet" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAABAAQAAAACAAAAAAAAACAAABAAQAAA=</HashCode>
+      <FileName>bullet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LogicLayer" Collapsed="true">
+    <Position X="5.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAAsIAICCAAAAEBAAABARAAABBGAAEIAgAKSE=</HashCode>
+      <FileName>LogicLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapItem" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAACAAAIAAACQAAAACAAAABAQARCABABABABAA=</HashCode>
+      <FileName>mapItem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Point2D" Collapsed="true">
+    <Position X="7" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>mapItem.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="MapItemType" Collapsed="true">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>mapItem.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

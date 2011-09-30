@@ -43,6 +43,8 @@ private:
 public:
 	// tablica stanow klawiszy klawiatury
 	bool keyStates[256]; 
+	// tablica dla znakow specjalnych
+	bool specialKeystates[256];
 	// licznik ilosci przejsc funkcji doLogic od ostatniego respawnu creepa
 	int creepRespawnCounter;
 	// 'wzmacniacz wrazen' - z kazdym dodanym creepem licznik zwieksza sie, zmniejszajac oczekiwanie na kolejny respawn. Limitowany na poziomie 20.
