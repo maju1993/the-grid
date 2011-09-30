@@ -89,19 +89,16 @@ GLBatch b;
 		//modelViewMatrix.PopMatrix();
 		//		
 		
+		glDisable( GL_DEPTH_TEST );
 		
 		std::ostringstream txt;
-		txt<<"HP: "<<LogicLayer::getI()->player->hp;
-		glDisable( GL_DEPTH_TEST );
+		txt<<"HP: "<<LogicLayer::getI()->player->hp<<"\nPoints: "<<LogicLayer::getI()->points;
 		shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clWhite);
-		//shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), clWhite);
 		glRasterPos3f(-1, 0.95, 0);
-		//glRasterPos4d(-1, 0.9, 0, 1);
 		glutBitmapString(GLUT_BITMAP_HELVETICA_12, (unsigned char *)txt.str().c_str());
-		glEnable( GL_DEPTH_TEST );
-		if(this->showFpsInfo)
+		if(LogicLayer::getI()->showFPSinfo)
 		{
-			
+			txt = std::ostringstream();
 			txt << "FPS: " << framesPerSecond;
 			glDisable( GL_DEPTH_TEST );
 			shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clWhite);
@@ -110,10 +107,8 @@ GLBatch b;
 			glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (unsigned char *)txt.str().c_str());
 			glEnable( GL_DEPTH_TEST );
 		}
+		glEnable( GL_DEPTH_TEST );
 
-		// skierowanie poleceñ do wykonania
-    // Do the buffer Swap
-		//glFlush();
 		glutSwapBuffers();
 	}
 	//////////////////////////////////////////////////////////////////////

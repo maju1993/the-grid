@@ -166,7 +166,8 @@
 						bullets.erase(bullets.begin()+i);
 						creepy.erase(creepy.begin()+j);
 						j--;
-						points ++;
+						points++;
+						break;
 					}
 
 				}
@@ -218,16 +219,15 @@
 	{
 	
 		int dscx,dscy;
-		dscx = -100* sinf(player->angle * 3.14/180.0);// + player->getPosition().x;
-		dscy = -100 * cosf(player->angle* 3.14/180.0);// + player->getPosition().y;
+		//dscx = -100* sinf(player->angle * 3.14/180.0);// + player->getPosition().x;
+		//dscy = -100 * cosf(player->angle* 3.14/180.0);// + player->getPosition().y;
 
-
-		/*
 		dscx = player->destination.x - player->getPosition().x;
 		dscy = player->destination.y - player->getPosition().y;
 		dscx*=50;
 		dscy*=50;
-		*/
+		dscx += player->getPosition().x;
+		dscy += player->getPosition().y;
 
 		Bullet *bullet = new Bullet(
 			player->getPosition(),
