@@ -23,9 +23,11 @@ public:
 		Color *col;
 		switch(state)
 		{
+		case 1:
+			col = new Color(1, 0, 0, 1);
 		case 0:
 		default:
-			col = new Color(0, 1, 0, 1);
+			col = new Color(0.9f, 0.9f, 0.9f, 1);
 			break;
 		}
 		setFieldColor(x, y, *col);
