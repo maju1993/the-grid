@@ -32,6 +32,7 @@ void keyboardFun(unsigned char key,int x,int y)
 }
 void specialFunc(int key,int x,int y)
 {
+	
 	switch(key)
 	{
 		case GLUT_KEY_UP:
@@ -50,6 +51,7 @@ void specialFunc(int key,int x,int y)
 		break;
 		
 	}
+
 }
 // wartoœæ FPS
 int framesPerSecond = 0;

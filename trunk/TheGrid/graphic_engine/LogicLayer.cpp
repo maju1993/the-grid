@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "LogicLayer.h"
 
-//graphicsShouldRefreshPlayer
-//	bool graphicsShouldRefreshCreeps;
-//	bool graphicsShouldRefreshBullets;
 
 	void LogicLayer::MovePlayer(Point2D newPos)
 	{
@@ -30,18 +27,14 @@
 		}
 	}
 
-	void LogicLayer::MovePlayer(int x,int y) // wersja relatywna
-	{
-		if (x == 1)
-			player->teleportTo(player->getPosition().x+player->getSpeed(),player->getPosition().y);
-		if (x == -1)
-			player->teleportTo(player->getPosition().x-player->getSpeed(),player->getPosition().y);
-		if (y == 1)
-			player->teleportTo(player->getPosition().x,player->getPosition().y+player->getSpeed());
-		if (y == -1)
-			player->teleportTo(player->getPosition().x,player->getPosition().y-player->getSpeed());
-		if ((x!=0) ||(y!=0))
-			graphicsShouldRefreshPlayer = true;
+	void LogicLayer::MovePlayer(float x,float y) // wersja relatywna - rotation, move
+	{	
+		//player->teleportBy(player->getSpeed()*x, player->getSpeed() *y);//player->getPosition().x,player->getPosition().y-player->getSpeed());
+		
+		
+
+
+		graphicsShouldRefreshPlayer = true;
 	}
 
 	// funkcja
@@ -51,7 +44,8 @@
 		std::vector<mapItem*>::iterator it;  
 		for ( it=creepy.begin() ; it < creepy.end(); it++ )
 		{
-			if ((*it)->doStep())
+			if ((*it)->doStep()) 
+				;
 				graphicsShouldRefreshCreeps = true;
 		}
 		siCreepFollowPlayer();
