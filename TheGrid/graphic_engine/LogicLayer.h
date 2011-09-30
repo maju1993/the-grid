@@ -46,6 +46,10 @@ public:
 	// funkcja do testow dla getoxa!	
 	void siCreepFollowPlayer();
 
+	// funkcja spawnowania
+
+	// funkcja lotu bulletow
+
 	// funkcja
 	void doLogic(); 
 
