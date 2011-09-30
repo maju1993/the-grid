@@ -102,6 +102,28 @@
 				bullets.erase(bullets.begin()+i);
 				i--;
 			}
+			else
+			{
+				// sprawdzanie zderzen
+				for (int j=0;j<creepy.size();j++)
+				{
+					// sprawdzanie odleglosci
+					int distX = abs(creepy[j]->getPosition().x - bullets[i]->mapPos.x) * 20 + creepy[j]->getOffset().x + bullets[i]->offset.x;
+					int distY = abs(creepy[j]->getPosition().y - bullets[i]->mapPos.y) * 20 + creepy[j]->getOffset().y + bullets[i]->offset.y;
+
+					int realDist = sqrtf(distX*distX + distY*distY);
+					if (realDist < 10)
+					{
+						// zderzenie
+						
+						bullets.erase(bullets.begin()+i);
+						creepy.erase(creepy.begin()+j);
+						j--;
+						
+					}
+
+				}
+			}
 		}
 	}
 
