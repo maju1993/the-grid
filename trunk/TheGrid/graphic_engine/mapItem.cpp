@@ -30,7 +30,7 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 	float speedX,speedY;
 	float wsp;
 
-	if ((mapPos.x == destination.x) &&(mapPos.y == destination.y))
+	if ((mapPos.x == destination.x) &&(mapPos.y == destination.y)&&(offset.x == destinationOffset.x)&&(offset.y == destinationOffset.y))
 		return false;
 
 	if (destination.x>mapPos.x)
@@ -54,7 +54,9 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 			speedY = mapPos.y-destination.y;
 		}
 		else
-			speedY = 0;
+		{
+			speedY=0;
+		}
 	wsp = speedX/speedY;
 	// mozliwe ze trzeba na odwrot to napisac.
 	speedX = speed;// * wsp;
@@ -70,13 +72,48 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 	else
 		if (destination.x > mapPos.x)
 			offset.x +=speedX;
+		else
+		{
+			if (offset.x > destinationOffset.x)
+			{
+				if (offset.x - speedX < destinationOffset.x)
+					offset.x = destinationOffset.x;
+				else
+					offset.x -= speedX;
+			}
+			else
+			{
+				if (offset.x + speedX > destinationOffset.x)
+					offset.x = destinationOffset.x;
+				else
+					offset.x += speedX;
+			}
+
+		}
 
 	if (destination.y < mapPos.y)
 		offset.y -=speedY;
 	else
 		if (destination.y > mapPos.y)
 			offset.y +=speedY;
+		else
+		{
+			if (offset.y > destinationOffset.y)
+			{
+				if (offset.y - speedY < destinationOffset.y)
+					offset.y = destinationOffset.y;
+				else
+					offset.y -= speedY;
+			}
+			else
+			{
+				if (offset.y + speedY > destinationOffset.y)
+					offset.y = destinationOffset.y;
+				else
+					offset.y += speedY;
+			}
 
+		}
 	// normalizacja ruchu
 	while (offset.x >10)
 	{
@@ -124,9 +161,10 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 	return true;
 }
 
-void mapItem::moveTo(int posX,int posY)
+void mapItem::moveTo(int posX,int posY,int destoX,int destoY)
 {
 	this->destination = Point2D(posX,posY);
+	this->destinationOffset = Point2D(destoX,destoY);
 }
 	
 void mapItem::teleportTo(int x,int y)

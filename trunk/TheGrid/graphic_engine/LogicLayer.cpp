@@ -42,7 +42,7 @@
 		}
 		siCreepFollowPlayer();
 
-		if (player->doStep())
+		//if (player->doStep())
 			graphicsShouldRefreshPlayer = true;
 
 	}

@@ -30,6 +30,7 @@ private:
 
 	// movement data
 	Point2D destination;  	// destination  position
+	Point2D destinationOffset; // destination offset
 	int speed;				// overall speed
 
 	// interpolation data ?
@@ -43,6 +44,6 @@ public:
 
 	bool doStep(); // automated move func
 
-	void moveTo(int posX,int posY);
+	void moveTo(int posX,int posY,int destoX=0,int destoY=0);
 	void teleportTo(int x,int y);
 };
