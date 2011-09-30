@@ -23,7 +23,8 @@ private:
 				grid[i][j] = 0;
 
 		player = new mapItem(MapItemTypePlayer,10,10,5);//gridWidth/2,gridHeight/2,2); // 2 "wirtualne pola" na 1/3s
-
+		creepRespawnCounter = 0;
+		creepHardcore = 0;
 		graphicsShouldRefreshBullets = true;
 		graphicsShouldRefreshCreeps = true;
 		graphicsShouldRefreshPlayer = true;
@@ -35,7 +36,8 @@ private:
     }
 public:
 	bool keyStates[256]; // don't ask
-
+	int creepRespawnCounter;
+	int creepHardcore;
 	mapItem* player;
 	std::vector<mapItem*> creepy;
 	std::vector<Bullet*> bullets;

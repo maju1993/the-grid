@@ -55,6 +55,22 @@
 	// funkcja
 	void LogicLayer::doLogic()
 	{
+		creepRespawnCounter++;
+		if (creepRespawnCounter > 30 - (creepHardcore <20 ? creepHardcore:20))
+		{
+			int proposed_x;
+			int proposed_y;
+			do
+			{
+			proposed_x = rand() % gridWidth;
+			proposed_y = rand() % gridHeight;
+			} while ((proposed_x>player->getPosition().x-4)&&(proposed_x<player->getPosition().x+4) && (proposed_y>player->getPosition().y-4) && (proposed_y<player->getPosition().y+4));
+
+			addCreep(Point2D(proposed_x,proposed_y),rand()%3+1);
+			creepRespawnCounter = 0;
+			creepHardcore++;
+		}
+
 		// wpierw creepy potem player - spowoduje to pewna 'glupote creepow', na dodatek creepy wpierw ruch potem przeliczenie
 		std::vector<mapItem*>::iterator it;  
 		for ( it=creepy.begin() ; it < creepy.end(); it++ )
