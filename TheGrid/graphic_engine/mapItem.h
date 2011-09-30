@@ -35,7 +35,7 @@ private:
 	// interpolation data ?
 
 public:
-	mapItem(MapItemType typ, int posX,int posY,int speed);	
+	mapItem(MapItemType typ, int posX,int posY, int speed);
 
 	Point2D getPosition();
 	Point2D getOffset();

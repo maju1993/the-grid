@@ -39,21 +39,24 @@ int framesPerSecond = 0;
 // licznik ramek
 int frames = 0;
 // licznik czasu
-long startTime = 0;
+long startTime = clock();
 long lastTime = clock();
 int logicTimeCounter = 0;
+long graphicLastTime = clock();
 int graphicTimeCounter = 0;
 void displayFunc()
 {
 	logicTimeCounter += clock() - lastTime;
+	lastTime = clock();
 	if((double)logicTimeCounter/CLOCKS_PER_SEC > 0.1)
 	{
 		logicTimeCounter = 0;
 		LogicLayer::getI()->doLogic();
 	}
 	
-	graphicTimeCounter += clock() - lastTime;
-	if((double)graphicTimeCounter/CLOCKS_PER_SEC > 0.02)
+	graphicTimeCounter += (clock() - graphicLastTime);
+	graphicLastTime = clock();
+	if((double)graphicTimeCounter/CLOCKS_PER_SEC >= 0.02)
 	{
 		graphicTimeCounter = 0;
 		// licznik czasu
@@ -68,7 +71,6 @@ void displayFunc()
 
 		GraphicEng::getI()->DisplayScene();
 	}
-	lastTime = clock();
 	//wymuszenie przejscia kolejnej klatku petli gry
 	glutPostRedisplay();
 }
