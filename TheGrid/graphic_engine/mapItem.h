@@ -2,8 +2,8 @@
 
 enum MapItemType
 {
-	creep = 0,
-	player = 1
+	MapItemTypeCreep = 0,
+	MapItemTypePlayer = 1
 };
 
 struct Point2D
@@ -13,6 +13,11 @@ struct Point2D
 	{
 		x = a;
 		y = b;
+	}
+
+	Point2D()
+	{
+		x = y = 0;
 	}
 };
 
@@ -34,8 +39,9 @@ public:
 
 	Point2D getPosition();
 	Point2D getOffset();
-	float getAngle();
+	Point2D getAngleVec();
 
+	bool doStep(); // automated move func
 
 	void moveTo(int posX,int posY);
 	void teleportTo(int x,int y);

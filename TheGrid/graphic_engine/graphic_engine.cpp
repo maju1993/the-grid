@@ -19,7 +19,7 @@ GLMatrixStack		modelViewMatrix;
 
 		if(LogicLayer::getI()->graphicsShouldRefreshBullets || LogicLayer::getI()->graphicsShouldRefreshCreeps || LogicLayer::getI()->graphicsShouldRefreshPlayer)
 		{
-			groundGrid->rescanState(LogicLayer::getI()->plansza);
+			groundGrid->rescanState(LogicLayer::getI()->grid);
 		}
 	
 		for(std::vector<ILayer*>::iterator it = layers.begin(); it<layers.end(); it++)

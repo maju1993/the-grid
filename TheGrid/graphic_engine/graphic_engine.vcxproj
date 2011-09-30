@@ -108,6 +108,7 @@
     <ClCompile Include="GroundGridLayer.cpp" />
     <ClCompile Include="LogicLayer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mapItem.cpp" />
     <ClCompile Include="ModelsLayer.cpp" />
     <ClCompile Include="Player.h" />
     <ClCompile Include="stdafx.cpp">
