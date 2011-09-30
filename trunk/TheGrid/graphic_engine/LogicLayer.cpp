@@ -213,6 +213,9 @@
 
 		if (keyStates['f'] || keyStates['F'])
 			showFPSinfo = !showFPSinfo;
+
+		if (keyStates[27])
+			glutExit();
 	};
 
 	void LogicLayer::shot()
