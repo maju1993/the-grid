@@ -41,7 +41,7 @@ void ModelsLayer::updateBullets(std::vector<Bullet*> _bullets)
 		bullet->move(grid);
 		
 		bullet->setBatch(new GLBatch());
-		DrawHelper::drawTriangle(*bullet->batch, 0, 0, 1, 1, *grid);
+		DrawHelper::drawBullet(*bullet->batch, 0, 0, 1, 1, *grid);
 		
 		bullets.push_back(bullet);
 	}

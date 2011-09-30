@@ -50,6 +50,7 @@ void specialFunc(int key,int x,int y)
 			LogicLayer::getI()->MovePlayer(5,0);
 		break;
 		
+		
 	}
 
 }
