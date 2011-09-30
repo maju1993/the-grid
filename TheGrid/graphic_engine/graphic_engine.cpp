@@ -45,12 +45,12 @@ GLBatch b;
 		modelViewMatrix.Translate(0.0f, 0.0f, 2.5f); // Scootch the world down a bit...
 		modelViewMatrix.Rotate(15, 1, 0, 0);
 
-		shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), clBlue);	
+		/*shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), clBlue);	
 		b.Begin(GL_TRIANGLE_FAN, 10);
 		b.Vertex3f(0,0,-1);
 		b.Vertex3f(0.8f,0,-1);
 		b.Vertex3f(2,1,-1);
-		b.End();
+		b.End();*/
 
 
 		//groundGrid->Render((float*)transformPipeline.GetModelViewProjectionMatrix());
@@ -60,8 +60,9 @@ GLBatch b;
 		{
 			(*it)->Render((float*)transformPipeline.GetModelViewProjectionMatrix());
 		}
-		
+
 		modelViewMatrix.PopMatrix();
+
 		modelViewMatrix.PopMatrix();
 		//grid.renderFields();
 		//
@@ -88,16 +89,26 @@ GLBatch b;
 		//modelViewMatrix.PopMatrix();
 		//		
 		
+		
+		std::ostringstream txt;
+		txt<<"HP: "<<LogicLayer::getI()->player->hp;
+		glDisable( GL_DEPTH_TEST );
+		shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clWhite);
+		//shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), clWhite);
+		glRasterPos3f(-1, 0.95, 0);
+		//glRasterPos4d(-1, 0.9, 0, 1);
+		glutBitmapString(GLUT_BITMAP_HELVETICA_12, (unsigned char *)txt.str().c_str());
+		glEnable( GL_DEPTH_TEST );
 		if(this->showFpsInfo)
 		{
-			/*std::ostringstream txt;
+			
 			txt << "FPS: " << framesPerSecond;
 			glDisable( GL_DEPTH_TEST );
-			shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clBlack);
+			shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clWhite);
 			glColor3f(0, 0, 0); 
 			glRasterPos4d(-1, -1, 0, 1);
 			glutBitmapString(GLUT_BITMAP_TIMES_ROMAN_24, (unsigned char *)txt.str().c_str());
-			glEnable( GL_DEPTH_TEST );*/
+			glEnable( GL_DEPTH_TEST );
 		}
 
 		// skierowanie poleceñ do wykonania
