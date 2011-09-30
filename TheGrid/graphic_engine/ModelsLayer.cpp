@@ -73,7 +73,7 @@ void ModelsLayer::updatePlayer(mapItem* _player)
 	player->move(this->grid);
 
 	player->setBatch(new GLBatch());
-	DrawHelper::drawTriangle(*player->batch, 0, 0, 0, 1, *grid);
+	DrawHelper::drawTriangle(*player->batch, 1, 1, 1, 1, *grid);
 }
 void ModelsLayer::moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
 {
