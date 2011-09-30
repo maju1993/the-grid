@@ -46,4 +46,5 @@ public:
 
 	void moveTo(int posX,int posY,int destoX=0,int destoY=0);
 	void teleportTo(int x,int y);
+	inline int getSpeed(){return speed;}
 };
