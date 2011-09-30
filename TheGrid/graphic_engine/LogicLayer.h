@@ -7,7 +7,10 @@ class LogicLayer
 {
 private:
 	LogicLayer()
-    {		
+    {	
+		for (int i=0;i<256;i++)
+			keyStates[i] = false;
+
 		grid = new int*[GRID_START_W];
 		for (int i=0;i<GRID_START_W;i++)
 			grid[i] = new int[GRID_START_H];
@@ -28,6 +31,8 @@ private:
 		addCreep(Point2D(1,10),1);
     }
 public:
+	bool keyStates[256]; // don't ask
+
 	mapItem* player;
 	std::vector<mapItem*> creepy;
 	std::vector<Bullet*> bullets;
@@ -53,7 +58,7 @@ public:
 
 	// funkcja
 	void doLogic(); 
-
+	void doSteering();
 	// sing
 	static LogicLayer* getI()
 	{
