@@ -27,6 +27,9 @@
     <ClCompile Include="LogicLayer.cpp">
       <Filter>Logic</Filter>
     </ClCompile>
+    <ClCompile Include="mapItem.cpp">
+      <Filter>Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h" />
