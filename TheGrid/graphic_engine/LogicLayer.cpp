@@ -209,6 +209,9 @@
 
 		if (keyStates[32])
 			shot();
+
+		if (keyStates['f'] || keyStates['F'])
+			showFPSinfo = !showFPSinfo;
 	};
 
 	void LogicLayer::shot()

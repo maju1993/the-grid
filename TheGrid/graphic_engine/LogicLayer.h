@@ -10,7 +10,7 @@ private:
     {	
 		for (int i=0;i<256;i++)
 			keyStates[i] = false;
-
+		showFPSinfo = false;
 		//Bullet::bulletSpeed = 10;
 
 		grid = new int*[GRID_START_W];
@@ -54,6 +54,8 @@ public:
 	bool graphicsShouldRefreshPlayer;
 	bool graphicsShouldRefreshCreeps;
 	bool graphicsShouldRefreshBullets;
+
+	bool showFPSinfo;
 
 	void MovePlayer(Point2D newPos); // wersja z wspolrzednymi
 	void MovePlayer(float x,float y); // wersja relatywna
