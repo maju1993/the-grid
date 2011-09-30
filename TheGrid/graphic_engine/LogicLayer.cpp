@@ -20,10 +20,36 @@
 	// funkcja do testow dla getoxa!	
 	void LogicLayer::siCreepFollowPlayer()
 	{
-		std::vector<mapItem*>::iterator it;  
-		for ( it=creepy.begin() ; it < creepy.end(); it++ )
+		//std::vector<mapItem*>::iterator it;  
+		//for ( it=creepy.begin() ; it < creepy.end(); it++ )
+		for (int i=0;i<creepy.size();i++)
 		{
-			(*it)->moveTo(player->getPosition().x,player->getPosition().y);
+			//(*it)->moveTo(player->getPosition().x,player->getPosition().y);
+			creepy[i]->moveTo(player->getPosition().x,player->getPosition().y);
+		}
+
+		// check zderzenia
+		for (int i=0;i<creepy.size();i++)
+		{
+					// sprawdzanie odleglosci
+					int distX = abs(creepy[i]->getPosition().x - player->getPosition().x) * 20 + creepy[i]->getOffset().x + player->getOffset().x;
+					int distY = abs(creepy[i]->getPosition().y - player->getPosition().y) * 20 + creepy[i]->getOffset().y + player->getOffset().y;
+
+					int realDist = sqrtf(distX*distX + distY*distY);
+					if (realDist < 10)
+					{
+						// zderzenie												
+						creepy.erase(creepy.begin()+i);
+						player->hp--;						
+						i--;						
+					}
+
+			
+		}
+		if (player->hp<=0)
+		{
+			player->hp = 0;
+			gameover = true;
 		}
 	}
 
@@ -55,6 +81,11 @@
 	// funkcja
 	void LogicLayer::doLogic()
 	{
+		if (gameover)
+		{
+			doSteering();
+			return;
+		}
 		creepRespawnCounter++;
 		if (creepRespawnCounter > 30 - (creepHardcore <20 ? creepHardcore:20))
 		{
@@ -72,10 +103,11 @@
 		}
 
 		// wpierw creepy potem player - spowoduje to pewna 'glupote creepow', na dodatek creepy wpierw ruch potem przeliczenie
-		std::vector<mapItem*>::iterator it;  
-		for ( it=creepy.begin() ; it < creepy.end(); it++ )
+		//std::vector<mapItem*>::iterator it;  
+		for (int i=0;i<creepy.size();i++)// it=creepy.begin() ; it < creepy.end(); it++ )
 		{
-			if ((*it)->doStep()) 
+			creepy[i]->doStep();
+			//if ((*it)->doStep()) 
 				;
 				graphicsShouldRefreshCreeps = true;
 		}
@@ -111,12 +143,12 @@
 					it = bullets.begin();
 			}
 		}*/
-		for (int i=0;i<bullets.size();i++)
+		for (int i=bullets.size()-1;i>0;i--)
 		{
 			if (bullets[i]->doStep())
 			{
 				bullets.erase(bullets.begin()+i);
-				i--;
+				//i--;
 			}
 			else
 			{
@@ -130,12 +162,11 @@
 					int realDist = sqrtf(distX*distX + distY*distY);
 					if (realDist < 10)
 					{
-						// zderzenie
-						
+						// zderzenie						
 						bullets.erase(bullets.begin()+i);
 						creepy.erase(creepy.begin()+j);
 						j--;
-						
+						points ++;
 					}
 
 				}
@@ -155,6 +186,13 @@
 
 	void LogicLayer::doSteering()
 	{
+		if (gameover)
+		{
+			if (keyStates[13])
+				glutExit();
+			return;
+		}
+
 		if (keyStates[GLUT_KEY_UP])
 			LogicLayer::getI()->MovePlayer(0,-1);
 		

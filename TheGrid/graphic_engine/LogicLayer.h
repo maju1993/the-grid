@@ -33,11 +33,18 @@ private:
 		addCreep(Point2D(5,1),2);
 		addCreep(Point2D(1,10),1);
 		
+		points = 0;
+		gameover = false;
     }
 public:
 	bool keyStates[256]; // don't ask
 	int creepRespawnCounter;
 	int creepHardcore;
+
+	int points;
+
+	bool gameover;
+
 	mapItem* player;
 	std::vector<mapItem*> creepy;
 	std::vector<Bullet*> bullets;
