@@ -127,22 +127,10 @@
 
 	void LogicLayer::moveBullets()
 	{
-		/*
-		std::vector<Bullet*>::iterator it,tmp;
-		for (it = bullets.begin();it<bullets.end();it++)
-		{
-			if ((*it)->doStep())
-			{	
-				if (it != bullets.begin())
-					tmp = it--;
-				else 
-					tmp = NULL;
-				// wyszlo poza zakres
-				bullets.erase(it);				
-				if (bullets.size()>0)
-					it = bullets.begin();
-			}
-		}*/
+		//for(int i=0; i<gridHeight; i++)
+		//	for(int j=0; j<gridWidth; j++)
+		//		grid[i][j] = 0;
+
 		for (int i=bullets.size()-1;i>0;i--)
 		{
 			if (bullets[i]->doStep())
@@ -152,6 +140,7 @@
 			}
 			else
 			{
+				/*grid[bullets[i]->mapPos.y][bullets[i]->mapPos.x] = 1;*/
 				// sprawdzanie zderzen
 				for (int j=0;j<creepy.size();j++)
 				{
