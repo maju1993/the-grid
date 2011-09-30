@@ -39,7 +39,7 @@ public:
 	bool graphicsShouldRefreshBullets;
 
 	void MovePlayer(Point2D newPos); // wersja z wspolrzednymi
-	void MovePlayer(int x,int y); // wersja relatywna
+	void MovePlayer(float x,float y); // wersja relatywna
 	void TeleportPlayer(Point2D newPos);
 
 	void addCreep(Point2D pos,int speed);

@@ -172,3 +172,33 @@ void mapItem::teleportTo(int x,int y)
 	this->mapPos = Point2D(x,y);
 	this->offset = Point2D(0,0);
 }
+
+void mapItem::teleportBy(int offsetx,int offsety)
+{
+	offset.x += offsetx;
+	offset.y += offsety;
+
+	while (offset.x >10)
+	{
+		mapPos.x ++;
+		offset.x -=20;
+	}
+
+	while (offset.x <-10)
+	{
+		mapPos.x --;
+		offset.x +=20;
+	}
+
+	while (offset.y >10)
+	{
+		mapPos.y ++;
+		offset.y -=20;
+	}
+
+	while (offset.y <-10)
+	{
+		mapPos.y --;
+		offset.y +=20;
+	}
+}

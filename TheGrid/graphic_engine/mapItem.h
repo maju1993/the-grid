@@ -32,10 +32,11 @@ private:
 	Point2D destination;  	// destination  position
 	Point2D destinationOffset; // destination offset
 	int speed;				// overall speed
-
+	
 	// interpolation data ?
 
 public:
+	int angle;
 	mapItem(MapItemType typ, int posX,int posY, int speed);
 
 	Point2D getPosition();
@@ -46,5 +47,6 @@ public:
 
 	void moveTo(int posX,int posY,int destoX=0,int destoY=0);
 	void teleportTo(int x,int y);
+	void teleportBy(int offsetx,int offsety);
 	inline int getSpeed(){return speed;}
 };

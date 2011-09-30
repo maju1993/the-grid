@@ -78,7 +78,7 @@ GLMatrixStack		modelViewMatrix;
 	void GraphicEng::InitScene()
 	{
     // kolor t³a - zawartoœæ bufora koloru
-    glClearColor( 1.0f, 1.0f, 1.0f, 1.0f );
+    glClearColor( 1.0f, 1.0f,1.0f, 1.0f );
 		shaderManager.InitializeStockShaders();
     glEnable( GL_DEPTH_TEST );
 		
