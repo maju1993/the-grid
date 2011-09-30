@@ -10,7 +10,7 @@ private:
     {		
 		grid = new int*[GRID_START_W];
 		for (int i=0;i<GRID_START_W;i++)
-			*grid = new int[GRID_START_H];
+			grid[i] = new int[GRID_START_H];
 		gridWidth = GRID_START_W;
 		gridHeight = GRID_START_H;
 		for (int i=0;i<gridWidth;i++)

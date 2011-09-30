@@ -2,13 +2,17 @@
 #include "GroundGridLayer.h"
 
 
-GroundGridLayer::GroundGridLayer(Grid* _grid)
+GroundGridLayer::GroundGridLayer(GLShaderManager* shaderMaganer, Grid* _grid)
 {
+	this->shaderMaganer = shaderMaganer;
 	lineBash = 0;
 	this->grid = _grid;
 	for(int i=0; i<GROUND_GRID_H; i++)
 		for(int j=0; j<GROUND_GRID_W; j++)
 			groundBatch[j][i] = 0;
+	for(int i=0; i<GROUND_GRID_H; i++)
+		for(int j=0; j<GROUND_GRID_W; j++)
+			stateTable[j][i] = 0;
 	
 }
 void GroundGridLayer::rescanState(int **stateTable)
@@ -82,18 +86,10 @@ void GroundGridLayer::setFieldColor(int x, int y, Color col)
 	groundBatch[y][x]->Color4fv(color);
 	groundBatch[y][x]->Vertex3f(grid->minX+x*grid->fieldW, grid->minY+(y+1)*grid->fieldH, grid->groundZ);
 	groundBatch[y][x]->End();
-}	
-GLfloat* GroundGridLayer::getPosition(int gridX, int gridY, int offsetX, int offsetY)
-{
-	GLfloat *pos = new GLfloat[3];
-
-	pos[0] = grid->minX+gridX*this->grid->fieldW + grid->fieldW/2 + offsetX*(this->grid->fieldW/20);
-	pos[1] = grid->maxY-gridY*this->grid->fieldH - grid->fieldH/2 + offsetY*(this->grid->fieldH/20);
-	pos[2] = grid->groundZ;
-	return pos;
 }
 void GroundGridLayer::Render(M3DMatrix44f modelViewMatrix)
 {
+	shaderMaganer->UseStockShader(GLT_SHADER_SHADED, modelViewMatrix);
 	for(int i=0; i<GROUND_GRID_H; i++)
 		for(int j=0; j<GROUND_GRID_W; j++)
 			groundBatch[j][i]->Draw();

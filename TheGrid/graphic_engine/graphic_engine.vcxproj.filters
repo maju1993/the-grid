@@ -12,9 +12,6 @@
     <ClCompile Include="DrawHelper.h">
       <Filter>Graphic\Helper</Filter>
     </ClCompile>
-    <ClCompile Include="Player.h">
-      <Filter>Graphic</Filter>
-    </ClCompile>
     <ClCompile Include="GroundGridLayer.cpp">
       <Filter>Graphic\Layer</Filter>
     </ClCompile>

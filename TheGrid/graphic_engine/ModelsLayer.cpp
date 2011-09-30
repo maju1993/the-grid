@@ -75,14 +75,14 @@ void ModelsLayer::updatePlayer(mapItem* _player)
 	player->setBatch(new GLBatch());
 	DrawHelper::drawTriangle(*player->batch, 0, 0, 0, 1, *grid);
 }
-void ModelsLayer::moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateAngle)
+void ModelsLayer::moveModel(int id, int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
 {
 	for(int i=0; i<(int)models.size(); i++)
 	{
 		if(models[i]->id == id)
 		{
 			GridObject &model = *(models[i]);
-			model.fill(x, y, offsetX, offsetY, rotateAngle);
+			model.fill(x, y, offsetX, offsetY, rotateVecX, rotateVecY);
 			model.move(grid);
 		}
 	}
@@ -90,6 +90,8 @@ void ModelsLayer::moveModel(int id, int x, int y, int offsetX, int offsetY, GLfl
 void ModelsLayer::Init()
 {
 }
+	/*M3DMatrix44f mat;
+	M3DMatrix44f rot;*/
 void ModelsLayer::Render(M3DMatrix44f modelViewMatrix)
 {
 	M3DMatrix44f productMatrix;
@@ -105,7 +107,21 @@ void ModelsLayer::Render(M3DMatrix44f modelViewMatrix)
 	{
 		this->updateBullets(LogicLayer::getI()->bullets);
 	}
-
+	
+	/*m3dLoadIdentity44(mat);
+	m3dLoadIdentity44(rot);
+	m3dTranslationMatrix44(mat, 0.5f, 0.5f, 0);
+	m3dRotationMatrix44(rot, m3dDegToRad(45), 0, 0, -1);
+	m3dMatrixMultiply44(productMatrix, rot, mat);
+	m3dMatrixMultiply44(productMatrix, productMatrix, modelViewMatrix);
+	shaderManager.UseStockShader(GLT_SHADER_SHADED, productMatrix);
+	GLBatch b;
+	b.Begin(GL_TRIANGLES, 3);
+	b.Vertex3f(-0.5f, 0.0f, -0.1f); b.Color4fv((float*)clBlue);
+	b.Vertex3f(0.5f, 0.0f, -0.1f);b.Color4fv((float*)clBlue);
+	b.Vertex3f(0.5f, 0.5f, -0.8f);b.Color4fv((float*)clBlue);
+	b.End();
+	b.Draw();*/
 
 	for(std::vector<GridObject*>::iterator it = models.begin(); it<models.end(); it++)
 	{

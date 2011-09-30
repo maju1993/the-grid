@@ -5,7 +5,6 @@ extern int framesPerSecond;
 GraphicEng* GraphicEng::instance = NULL;
 
 GLMatrixStack		modelViewMatrix;
-
 	//////////////////////////////////////////////////////////////////////
 	// funkcja generuj¹ca scenê 3D
 	//////////////////////////////////////////////////////////////////////
@@ -15,7 +14,12 @@ GLMatrixStack		modelViewMatrix;
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );
 		
 		glLineWidth(5);
+		glPointSize(10);
 		shaderManager.UseStockShader(GLT_SHADER_SHADED, modelViewMatrix.GetMatrix());
+
+		
+		shaderManager.UseStockShader(GLT_SHADER_IDENTITY, clBlue);
+		
 
 		if(LogicLayer::getI()->graphicsShouldRefreshBullets || LogicLayer::getI()->graphicsShouldRefreshCreeps || LogicLayer::getI()->graphicsShouldRefreshPlayer)
 		{
@@ -51,7 +55,7 @@ GLMatrixStack		modelViewMatrix;
 		//		playerBatch->Draw();
 		//modelViewMatrix.PopMatrix();
 		//		
-
+		
 		if(this->showFpsInfo)
 		{
 			std::ostringstream txt;
@@ -67,7 +71,6 @@ GLMatrixStack		modelViewMatrix;
 		// skierowanie poleceñ do wykonania
 		glFlush();
 		glutSwapBuffers();
-		glutPostRedisplay();
 	}
 	//////////////////////////////////////////////////////////////////////
 	// inicjalizacja sta³ych elementów maszyny stanu OpenGL
@@ -79,8 +82,10 @@ GLMatrixStack		modelViewMatrix;
 		shaderManager.InitializeStockShaders();
     glEnable( GL_DEPTH_TEST );
 		
-		groundGrid = new GroundGridLayer(grid);
+		groundGrid = new GroundGridLayer(&shaderManager, grid);
 		layers.push_back(groundGrid);
+		modelsLayer = new ModelsLayer(&shaderManager, grid);
+		layers.push_back(modelsLayer);
 
 		for(std::vector<ILayer*>::iterator it = layers.begin(); it<layers.end(); it++)
 		{
