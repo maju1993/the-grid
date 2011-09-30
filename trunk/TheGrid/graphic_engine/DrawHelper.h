@@ -5,16 +5,20 @@
 class DrawHelper
 {
 public:
-	static void drawTriangle(GLBatch &batch,
-		GLfloat r, GLfloat g, GLfloat b, GLfloat a, Grid &grid)
+	static void drawTriangle(GLBatch &batch, GLfloat r, GLfloat g, GLfloat b, GLfloat a, Grid &grid)
 	{
-		batch.Begin(GL_TRIANGLES, 3);
-		batch.Color4f(r, g, b, a);
-		batch.Vertex3f(-grid.fieldW/2, 0, -0.1f);
-		batch.Color4f(r, g, b, a);
-		batch.Vertex3f(grid.fieldW/2, 0, -0.1f);
-		batch.Color4f(r, g, b, a);
-		batch.Vertex3f(0, grid.fieldH/2, -0.5f);
+		Color col(r, g, b, a);
+		batch.Begin(GL_TRIANGLE_FAN, 5);
+		batch.Color4fv(col.toArray());
+		batch.Vertex3f(0, 0, -0.7f);
+		batch.Color4fv(col.toArray());
+		batch.Vertex3f(-grid.fieldW/2, grid.fieldH/4, grid.groundZ);
+		batch.Color4fv(col.toArray());
+		batch.Vertex3f(0, -grid.fieldH/2, grid.groundZ);
+		batch.Color4fv(col.toArray());
+		batch.Vertex3f(grid.fieldW/2, grid.fieldH/4, grid.groundZ);
+		batch.Color4fv(col.toArray());
+		batch.Vertex3f(-grid.fieldW/2, grid.fieldH/4, grid.groundZ);
 		batch.End();
 	}
 };

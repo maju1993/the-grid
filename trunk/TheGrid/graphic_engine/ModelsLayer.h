@@ -47,7 +47,7 @@ public:
 			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX) + m3dDegToRad(180) ;
 		else
 			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, osX);
-		
+		//this->rotateAngle = 0;
 		double r = m3dRadToDeg(this->rotateAngle);
 	}
 	void move(Grid *grid)

@@ -101,6 +101,7 @@ int main(int argc, char* argv[])
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
 	glutInitWindowSize(900, 500);
 	glutCreateWindow("The Grid");
+	
 
 	GLenum err = glewInit();
 	if (GLEW_OK != err)
@@ -114,6 +115,7 @@ int main(int argc, char* argv[])
   glutDisplayFunc(displayFunc);
   glutKeyboardFunc(keyboardFun);
   glutSpecialFunc(specialFunc);
+	
 
 
 	GraphicEng::getI()->InitScene();
