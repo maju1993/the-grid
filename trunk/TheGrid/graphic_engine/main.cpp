@@ -104,6 +104,6 @@ int main(int argc, char* argv[])
 
 
 	GraphicEng::getI()->InitScene();	
-
+	 FreeConsole();
 	glutMainLoop();
 }
