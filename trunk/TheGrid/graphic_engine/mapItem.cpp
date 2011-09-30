@@ -8,6 +8,10 @@ mapItem::mapItem(MapItemType typ, int posX,int posY,int speed)
 	this->speed = speed;
 	this->type = typ;
 	angle=0;
+	if (type==MapItemTypeCreep)
+		hp = 1;
+	else
+		hp = 5;
 }
 
 Point2D mapItem::getPosition()
@@ -201,5 +205,27 @@ void mapItem::teleportBy(int offsetx,int offsety)
 	{
 		mapPos.y --;
 		offset.y +=20;
+	}
+
+	if (mapPos.x<0)
+	{
+		mapPos.x = 0;
+		offset.x = -10;
+	}
+	if (mapPos.x>LogicLayer::getI()->gridWidth-1)
+	{
+		mapPos.x = LogicLayer::getI()->gridWidth-1;
+		offset.x = 10;
+	}
+
+	if (mapPos.y<0)
+	{
+		mapPos.y = 0;
+		offset.y = -10;
+	}
+	if (mapPos.y>LogicLayer::getI()->gridHeight-1)
+	{
+		mapPos.y = LogicLayer::getI()->gridHeight-1;
+		offset.y = 10;
 	}
 }

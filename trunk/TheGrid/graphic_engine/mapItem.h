@@ -35,6 +35,7 @@ private:
 	// interpolation data ?
 
 public:
+	int hp;
 	Point2D destination;  	// destination  position
 	int angle;
 	MapItemType type;	
