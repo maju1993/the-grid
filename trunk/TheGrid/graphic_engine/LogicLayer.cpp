@@ -68,6 +68,7 @@
 		//if (player->doStep())
 			graphicsShouldRefreshPlayer = true;
 
+			doSteering();
 	}
 
 
@@ -77,4 +78,22 @@
 			delete [] *grid;
 		delete [] grid;
 		delete player;
+	};
+
+
+	void LogicLayer::doSteering()
+	{
+		if (keyStates[GLUT_KEY_UP])
+			LogicLayer::getI()->MovePlayer(0,-1);
+		
+
+		if (keyStates[GLUT_KEY_DOWN])
+			LogicLayer::getI()->MovePlayer(0,1);
+		
+		if (keyStates[GLUT_KEY_LEFT])
+			LogicLayer::getI()->MovePlayer(-5,0);
+		
+
+		if (keyStates[GLUT_KEY_RIGHT])
+			LogicLayer::getI()->MovePlayer(5,0);		
 	};

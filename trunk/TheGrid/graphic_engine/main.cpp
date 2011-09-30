@@ -3,10 +3,29 @@
 #include "stdafx.h"
 #include "graphic_engine.h"
 
+
+
+
+void keyPressed (int key, int x, int y) {
+	LogicLayer::getI()->keyStates[key] = true; // Set the state of the current key to pressed
+}
+
+void keyUp (int key, int x, int y) {
+	LogicLayer::getI()->keyStates[key] = false; // Set the state of the current key to not pressed
+}
+
+
+
+
+
+
+
+
 void reshapeFunc(int x,int y)
 {
   GraphicEng::getI()->Reshape(x, y);
 }
+/*
 void keyboardFun(unsigned char key,int x,int y)
 {
 	switch(key)
@@ -30,6 +49,7 @@ void keyboardFun(unsigned char key,int x,int y)
 	glutPostRedisplay();
 	//UniverseDraw::get()->KeyPressFunc(key,x,y);
 }
+
 void specialFunc(int key,int x,int y)
 {
 	
@@ -54,6 +74,9 @@ void specialFunc(int key,int x,int y)
 	}
 
 }
+*/
+
+
 // wartoœæ FPS
 int framesPerSecond = 0;
 // licznik ramek
@@ -116,9 +139,10 @@ int main(int argc, char* argv[])
 
 	glutReshapeFunc(reshapeFunc);
   glutDisplayFunc(displayFunc);
-  glutKeyboardFunc(keyboardFun);
-  glutSpecialFunc(specialFunc);
-	
+  //glutKeyboardFunc(keyboardFun);
+  //glutSpecialFunc(specialFunc);
+glutSpecialFunc(keyPressed);
+glutSpecialUpFunc(keyUp);
 
 
 	GraphicEng::getI()->InitScene();
