@@ -11,6 +11,8 @@ private:
 		for (int i=0;i<256;i++)
 			keyStates[i] = false;
 
+		//Bullet::bulletSpeed = 10;
+
 		grid = new int*[GRID_START_W];
 		for (int i=0;i<GRID_START_W;i++)
 			grid[i] = new int[GRID_START_H];
@@ -29,6 +31,7 @@ private:
 		addCreep(Point2D(1,1),1);
 		addCreep(Point2D(5,1),2);
 		addCreep(Point2D(1,10),1);
+		
     }
 public:
 	bool keyStates[256]; // don't ask
@@ -49,8 +52,10 @@ public:
 
 	void addCreep(Point2D pos,int speed);
 
-	// funkcja do testow dla getoxa!	
+	
 	void siCreepFollowPlayer();
+
+	void moveBullets();
 
 	// funkcja spawnowania
 
@@ -68,4 +73,5 @@ public:
 
 	void deinit();
 
+	void shot();
 };

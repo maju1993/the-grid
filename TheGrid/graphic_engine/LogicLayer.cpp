@@ -67,8 +67,42 @@
 
 		//if (player->doStep())
 			graphicsShouldRefreshPlayer = true;
+			
+			if (bullets.size()>0)
+			{
+				moveBullets();
+				graphicsShouldRefreshBullets = true;
+			}
 
 			doSteering();
+	}
+
+	void LogicLayer::moveBullets()
+	{
+		/*
+		std::vector<Bullet*>::iterator it,tmp;
+		for (it = bullets.begin();it<bullets.end();it++)
+		{
+			if ((*it)->doStep())
+			{	
+				if (it != bullets.begin())
+					tmp = it--;
+				else 
+					tmp = NULL;
+				// wyszlo poza zakres
+				bullets.erase(it);				
+				if (bullets.size()>0)
+					it = bullets.begin();
+			}
+		}*/
+		for (int i=0;i<bullets.size();i++)
+		{
+			if (bullets[i]->doStep())
+			{
+				bullets.erase(bullets.begin()+i);
+				i--;
+			}
+		}
 	}
 
 
@@ -96,4 +130,23 @@
 
 		if (keyStates[GLUT_KEY_RIGHT])
 			LogicLayer::getI()->MovePlayer(5,0);		
+		if (keyStates[32])
+			shot();
+	};
+
+	void LogicLayer::shot()
+	{
+		int dscx,dscy;
+
+		dscx = player->destination.x - player->getPosition().x;
+		dscy = player->destination.y - player->getPosition().y;
+		dscx*=50;
+		dscy*=50;
+
+		Bullet *bullet = new Bullet(
+			player->getPosition(),
+			player->getOffset(),
+			Point2D(dscx,dscy));
+
+		bullets.push_back(bullet);
 	};

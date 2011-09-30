@@ -101,6 +101,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Color.h" />
     <ClCompile Include="DrawHelper.h" />
     <ClCompile Include="graphic_engine.cpp" />
