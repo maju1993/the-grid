@@ -43,11 +43,11 @@ void specialFunc(int key,int x,int y)
 			LogicLayer::getI()->MovePlayer(0,1);
 		break;
 		case GLUT_KEY_LEFT:
-			LogicLayer::getI()->MovePlayer(-1,0);
+			LogicLayer::getI()->MovePlayer(-5,0);
 		break;
 
 		case GLUT_KEY_RIGHT:
-			LogicLayer::getI()->MovePlayer(1,0);
+			LogicLayer::getI()->MovePlayer(5,0);
 		break;
 		
 	}
