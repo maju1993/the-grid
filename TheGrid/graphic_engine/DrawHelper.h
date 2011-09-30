@@ -21,4 +21,14 @@ public:
 		batch.Vertex3f(-grid.fieldW/2, -grid.fieldH/4, grid.groundZ);
 		batch.End();
 	}
+
+	//------------------------------------------------------------------------------
+	static void drawBullet(GLBatch &batch, GLfloat r, GLfloat g, GLfloat b, GLfloat a, Grid &grid)
+	{
+		Color col(r, g, b, a);
+		batch.Begin(GL_POINTS, 1);
+		batch.Color4fv(col.toArray());
+		batch.Vertex3f(0, 0, -0.5f);
+		batch.End();
+	}
 };

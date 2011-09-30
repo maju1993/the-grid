@@ -36,7 +36,7 @@ public:
 
 	void fill(Bullet *bullet)
 	{
-		//fill(bullet->position.x, bullet->position.y, bullet->offset.x, bullet->offset.y, bullet-);
+		fill(bullet->position.x, bullet->position.y, bullet->offset.x, bullet->offset.y, 0, 0);
 	}
 	void fill(int x, int y, int offsetX, int offsetY, GLfloat rotateVecX, GLfloat rotateVecY)
 	{
