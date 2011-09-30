@@ -3,15 +3,21 @@
 const int GROUND_GRID_H = GRID_START_H;
 const int GROUND_GRID_W = GRID_START_W;
 
+//Klasa z informacjami o siatce
 class Grid
 {
 public:
+	//wartosci o minimalnej pozycji renderowania siatki
 	GLfloat minX, minY;
+	//wartosci o maksymalnej pozycji renderowania siatki
 	GLfloat maxX, maxY;
+	//wartosci o wielkoœci pola renderowania siatki
 	GLfloat fieldW, fieldH;
+	//polozenie z lini
 	GLfloat lineZ;
+	//polozenie Z pol
 	GLfloat groundZ;
-
+	//informacje o stanie kposzczegolnych pol
 	int gridTable[GROUND_GRID_H][GROUND_GRID_W];
 
 	//pobierania pozycji na wspolrzednych grafiki w zaleznosci od podanych wspolrzednych logiki
