@@ -44,12 +44,23 @@ public:
 		M3DVector3f os;
 		m3dLoadVector3(os, 0, 1, 0);
 		m3dNormalizeVector3(os);
+		double m = m3dRadToDeg(m3dGetAngleBetweenVectors3(rotateVec, os));
 		if(m3dGetVectorX(rotateVec) > 0)
-			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os) + m3dDegToRad(180) ;
+			if(m3dGetVectorY(rotateVec) > 0)
+			{
+				this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os) ;
+				this->rotateAngle += m3dDegToRad(360) - (2 * this->rotateAngle);
+			}
+			else
+			{
+				this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os);
+				this->rotateAngle += (2 * (m3dDegToRad(180)-this->rotateAngle));
+			}
 		else
 			this->rotateAngle = m3dGetAngleBetweenVectors3(rotateVec, os);
 		double r = m3dRadToDeg(this->rotateAngle);
-		fill(x, y, offsetX, offsetY, r);
+		
+		fill(x, y, offsetX, offsetY, this->rotateAngle);
 	}
 	void fill(int x, int y, int offsetX, int offsetY, double rotateAngle)
 	{
@@ -69,7 +80,7 @@ public:
 
 		m3dTranslationMatrix44(this->transformMatrix, pos[0], pos[1], pos[2]);
 		m3dLoadIdentity44(mat);
-		m3dRotationMatrix44(mat, rotateAngle, 0, 0, -1);
+		m3dRotationMatrix44(mat, rotateAngle, 0, 0, 1);
 		m3dMatrixMultiply44(this->transformMatrix, this->transformMatrix, mat);
 		
 	}
