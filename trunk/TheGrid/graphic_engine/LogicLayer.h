@@ -23,9 +23,9 @@ private:
 		graphicsShouldRefreshCreeps = true;
 		graphicsShouldRefreshPlayer = true;
 
-		addCreep(Point2D(1,1),10);
-		addCreep(Point2D(5,1),5);
-		addCreep(Point2D(1,10),0);
+		addCreep(Point2D(1,1),1);
+		addCreep(Point2D(5,1),2);
+		addCreep(Point2D(1,10),1);
     }
 public:
 	mapItem* player;

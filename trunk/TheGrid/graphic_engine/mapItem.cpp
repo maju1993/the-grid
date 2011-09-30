@@ -57,8 +57,8 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 			speedY = 0;
 	wsp = speedX/speedY;
 	// mozliwe ze trzeba na odwrot to napisac.
-	speedX = speed * wsp;
-	speedY = (speed - speed*wsp);
+	speedX = speed;// * wsp;
+	speedY = speed;//(speed - speed*wsp);
 
 	
 
@@ -71,11 +71,11 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 		if (destination.x > mapPos.x)
 			offset.x +=speedX;
 
-	if (destination.x < mapPos.x)
-		offset.x -=speedY;
+	if (destination.y < mapPos.y)
+		offset.y -=speedY;
 	else
-		if (destination.x > mapPos.x)
-			offset.x +=speedY;
+		if (destination.y > mapPos.y)
+			offset.y +=speedY;
 
 	// normalizacja ruchu
 	while (offset.x >10)
@@ -109,6 +109,17 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 	{
 		mapPos.x = LogicLayer::getI()->gridWidth-1;
 		offset.x = 10;
+	}
+
+	if (mapPos.y<0)
+	{
+		mapPos.y = 0;
+		offset.y = -10;
+	}
+	if (mapPos.y>LogicLayer::getI()->gridHeight-1)
+	{
+		mapPos.y = LogicLayer::getI()->gridHeight-1;
+		offset.y = 10;
 	}
 	return true;
 }
