@@ -17,7 +17,7 @@ private:
 			for (int j=0;j<gridHeight;j++)
 				grid[i][j] = 0;
 
-		player = new mapItem(MapItemTypePlayer,10,10,1);//gridWidth/2,gridHeight/2,2); // 2 "wirtualne pola" na 1/3s
+		player = new mapItem(MapItemTypePlayer,10,10,5);//gridWidth/2,gridHeight/2,2); // 2 "wirtualne pola" na 1/3s
 
 		graphicsShouldRefreshBullets = true;
 		graphicsShouldRefreshCreeps = true;
@@ -38,7 +38,8 @@ public:
 	bool graphicsShouldRefreshCreeps;
 	bool graphicsShouldRefreshBullets;
 
-	void MovePlayer(Point2D newPos);
+	void MovePlayer(Point2D newPos); // wersja z wspolrzednymi
+	void MovePlayer(int x,int y); // wersja relatywna
 	void TeleportPlayer(Point2D newPos);
 
 	void addCreep(Point2D pos,int speed);

@@ -32,7 +32,24 @@ void keyboardFun(unsigned char key,int x,int y)
 }
 void specialFunc(int key,int x,int y)
 {
+	switch(key)
+	{
+		case GLUT_KEY_UP:
+			LogicLayer::getI()->MovePlayer(0,-1);
+		break;
 
+		case GLUT_KEY_DOWN:
+			LogicLayer::getI()->MovePlayer(0,1);
+		break;
+		case GLUT_KEY_LEFT:
+			LogicLayer::getI()->MovePlayer(-1,0);
+		break;
+
+		case GLUT_KEY_RIGHT:
+			LogicLayer::getI()->MovePlayer(1,0);
+		break;
+		
+	}
 }
 // wartoœæ FPS
 int framesPerSecond = 0;

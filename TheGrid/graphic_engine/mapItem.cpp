@@ -66,7 +66,7 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 
 	if (destination.x < mapPos.x)
 	{
-		offset.x+=speedX;
+		offset.x-=speedX;
 		//mapPos.x -=speedX;
 	}
 	else

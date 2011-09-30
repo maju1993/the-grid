@@ -30,6 +30,20 @@
 		}
 	}
 
+	void LogicLayer::MovePlayer(int x,int y) // wersja relatywna
+	{
+		if (x == 1)
+			player->teleportTo(player->getPosition().x+player->getSpeed(),player->getPosition().y);
+		if (x == -1)
+			player->teleportTo(player->getPosition().x-player->getSpeed(),player->getPosition().y);
+		if (y == 1)
+			player->teleportTo(player->getPosition().x,player->getPosition().y+player->getSpeed());
+		if (y == -1)
+			player->teleportTo(player->getPosition().x,player->getPosition().y-player->getSpeed());
+		if ((x!=0) ||(y!=0))
+			graphicsShouldRefreshPlayer = true;
+	}
+
 	// funkcja
 	void LogicLayer::doLogic()
 	{
