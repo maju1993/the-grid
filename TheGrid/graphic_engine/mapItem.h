@@ -28,13 +28,14 @@ private:
 	Point2D offset;	// -10...10
 
 	// movement data
-	Point2D destination;  	// destination  position
+	
 	Point2D destinationOffset; // destination offset
 	int speed;				// overall speed
 	
 	// interpolation data ?
 
 public:
+	Point2D destination;  	// destination  position
 	int angle;
 	MapItemType type;	
 	mapItem(MapItemType typ, int posX,int posY, int speed);
