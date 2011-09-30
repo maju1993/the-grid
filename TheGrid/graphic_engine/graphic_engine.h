@@ -11,57 +11,37 @@
 class GraphicEng
 {
 private:
+	// Shader Manager
+	GLShaderManager		shaderManager;		
+	// Modelview Matrix
+	GLMatrixStack	modelViewMatrix;		
+	// Projection Matrix
+	GLMatrixStack	projectionMatrix;		
+	// View Frustum
+	GLFrustum	viewFrustum;			
+	// Geometry Transform Pipeline
+	GLGeometryTransform	transformPipeline;		
+	// Camera frame
+	GLFrame	cameraFrame;			
+
   static GraphicEng *instance;
 	GraphicEng()
     {
 			grid = new Grid(-1, 1, -1, 1, -0.001f, 0.0f);
 
-			playerBatch = 0 ;
     }
 public:
-	GLShaderManager	shaderManager;
-	GLFrustum viewFrustum;
 
 	//warstwa najnizsza
 	GroundGridLayer *groundGrid;
 	//warstwa modeli (player, creepy, pociski)
 	ModelsLayer *modelsLayer;
+	//wszystkie warstwy
 	std::vector<ILayer*> layers;
-
+	//informacje o siatce
 	Grid *grid;
 
-	void setTriangle(GLBatch &batch, int x, int y, int offsetX, int offsetY, double zRotateX, double zRotateY,
-		GLfloat r, GLfloat g, GLfloat b)
-	{
-		batch.Begin(GL_TRIANGLES, 3);
-
-		GLfloat* pos = grid->getPosition(x, y, offsetX, offsetY);
-		batch.Vertex3f(pos[0], pos[1]+grid->fieldH/2, -0.1f);
-		batch.Color4f(r, g, b, 1);
-		batch.Vertex3f(pos[0]+grid->fieldW, pos[1]+grid->fieldH/2, -0.1f);
-		batch.Color4f(r, g, b, 1);
-		batch.Vertex3f(pos[0]+grid->fieldW/2, pos[1]+grid->fieldH, -0.5f);
-		batch.Color4f(r, g, b, 1);
-		
-		batch.End();
-	}
-
-	GLBatch *playerBatch;
-	GLfloat playerX, playerY;
-	GLfloat playerZRotateX, playerZRotateY;
-	GLfloat playerZRotateSpeed;
-	GLfloat playerMoveSpeed;
-	M3DMatrix44f playerMatrix;
-
-	GridObject* gridObjects[GROUND_GRID_H][GROUND_GRID_W];
-
-	void rotatePlayer(int rotateAngle)
-	{
-
-	}
-
-	bool showFpsInfo;
-
+	//singleton
   static GraphicEng* getI()
 	{
 		if(instance == NULL)
@@ -77,12 +57,19 @@ public:
   void method();
   ~GraphicEng()
   {
-		showFpsInfo = true;
   }
 
-	//OpenGL funkcje
+	//////////////////////////////////////////////////////////////////////
+	// funkcja generuj¹ca scenê 3D
+	//////////////////////////////////////////////////////////////////////
 	void DisplayScene();
+	//////////////////////////////////////////////////////////////////////
+	// inicjalizacja sta³ych elementów maszyny stanu OpenGL
+	//////////////////////////////////////////////////////////////////////
 	void InitScene();
+	//////////////////////////////////////////////////////////////////////
+	// zmiana wielkoœci okna
+	//////////////////////////////////////////////////////////////////////
 	void Reshape( int width, int height );
 	void DeleteScene();
 };

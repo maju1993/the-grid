@@ -5,6 +5,7 @@
 class DrawHelper
 {
 public:
+	//generuje wroga badü playera w odpowiednim kolorze
 	static void drawTriangle(GLBatch &batch, GLfloat r, GLfloat g, GLfloat b, GLfloat a, Grid &grid)
 	{
 		Color col(r, g, b, a);
@@ -22,7 +23,7 @@ public:
 		batch.End();
 	}
 
-	//------------------------------------------------------------------------------
+	//generuje posick w ospowiednim kolorze
 	static void drawBullet(GLBatch &batch, GLfloat r, GLfloat g, GLfloat b, GLfloat a, Grid &grid)
 	{
 		Color col(r, g, b, a);

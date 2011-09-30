@@ -1,16 +1,21 @@
 #pragma once
 #include "ILayer.h"
 
-
+//Warstwa odpowiedzialna za wyswietlanie podloza
 class GroundGridLayer :
 	public ILayer
 {
 private:
+	//shader manager
 	GLShaderManager* shaderMaganer;
+	//konternet z liniami do renderowania
 	GLBatch *lineBash;
+	//konternery z kwadratami do renderowania
 	GLBatch *groundBatch[GROUND_GRID_H][GROUND_GRID_W];
+	//tablica stanow poszczegolnych pól
 	int stateTable[GROUND_GRID_H][GROUND_GRID_W];
 public:
+	//informacje o siatce
 	Grid* grid;
 	//zmienia kolor pola w gridzie
 	void changeFieldColor(int x, int y, int state)

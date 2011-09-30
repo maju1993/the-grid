@@ -6,7 +6,6 @@ ModelsLayer::ModelsLayer(GLShaderManager *shaderManager, Grid *_grid):shaderMana
 {
 	player = 0;
 }
-//dep
 void ModelsLayer::addCreep(int id)
 {
 	GridObject *creep = new GridObject(id); 
@@ -15,7 +14,6 @@ void ModelsLayer::addCreep(int id)
 
 	models.push_back(creep);
 }
-//dep
 void ModelsLayer::delModel(int id)
 {	
 	for(std::vector<GridObject*>::iterator it = models.begin(); it<models.end(); it++)
