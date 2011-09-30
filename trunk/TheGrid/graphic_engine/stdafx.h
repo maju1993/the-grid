@@ -38,6 +38,7 @@
 #include "bullet.h"
 #include "LogicLayer.h"
 #include "Grid.h"
+#include <cmath>
 
 #include <vector>
 //#include "common\extensions3.h"
