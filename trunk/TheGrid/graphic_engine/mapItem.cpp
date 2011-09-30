@@ -3,6 +3,10 @@
 
 mapItem::mapItem(MapItemType typ, int posX,int posY,int speed)
 {
+	mapPos = Point2D(posX,posY);
+	offset = Point2D(0,0);
+	this->speed = speed;
+	this->type = typ;
 }
 
 Point2D mapItem::getPosition()
@@ -94,6 +98,17 @@ bool mapItem::doStep() // ruch liniowy z podzialem szybkosci dwukierunkowej zale
 	{
 		mapPos.y --;
 		offset.y += 20;
+	}
+	
+	if (mapPos.x<0)
+	{
+		mapPos.x = 0;
+		offset.x = -10;
+	}
+	if (mapPos.x>LogicLayer::getI()->gridWidth-1)
+	{
+		mapPos.x = LogicLayer::getI()->gridWidth-1;
+		offset.x = 10;
 	}
 	return true;
 }

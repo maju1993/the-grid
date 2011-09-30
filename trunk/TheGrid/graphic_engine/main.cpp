@@ -49,7 +49,7 @@ void displayFunc()
 	if((double)logicTimeCounter/CLOCKS_PER_SEC > 0.1)
 	{
 		logicTimeCounter = 0;
-		//LogicLayer::getI()->doLogic();
+		LogicLayer::getI()->doLogic();
 	}
 	
 	graphicTimeCounter += clock() - lastTime;

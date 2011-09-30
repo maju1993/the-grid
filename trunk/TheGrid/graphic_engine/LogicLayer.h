@@ -17,14 +17,14 @@ private:
 			for (int j=0;j<gridHeight;j++)
 				grid[i][j] = 0;
 
-		player = new mapItem(MapItemTypePlayer,gridWidth/2,gridHeight/2,2); // 2 "wirtualne pola" na 1/3s
+		player = new mapItem(MapItemTypePlayer,10,10,1);//gridWidth/2,gridHeight/2,2); // 2 "wirtualne pola" na 1/3s
 
 		graphicsShouldRefreshBullets = true;
 		graphicsShouldRefreshCreeps = true;
 		graphicsShouldRefreshPlayer = true;
 
-		addCreep(Point2D(1,1),1);
-		addCreep(Point2D(5,1),1);
+		addCreep(Point2D(1,1),10);
+		addCreep(Point2D(5,1),5);
 		addCreep(Point2D(1,10),0);
     }
 public:
